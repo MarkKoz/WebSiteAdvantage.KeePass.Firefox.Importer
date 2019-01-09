@@ -29,6 +29,7 @@ using KeePassLib.Interfaces;
 using KeePassLib.Security;
 
 using WebSiteAdvantage.KeePass.Firefox.Importer.Properties;
+using WebSiteAdvantage.KeePass.Firefox.Utilities;
 
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
@@ -38,63 +39,36 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     public sealed class Importer : FileFormatProvider
     {
         private static readonly Lazy<Importer> LazyImporter = new Lazy<Importer>();
+
         public static Importer Instance => LazyImporter.Value;
 
-        /// <summary>
-        /// The type of import
-        /// </summary>
-        public override string ApplicationGroup
-        {
-            get { return KPRes.Browser; }
-        }
+        public override bool SupportsImport => true;
 
-        /// <summary>
-        /// xml
-        /// </summary>
-        public override string DefaultExtension
-        {
-            get { return "xml"; }
-        }
+        public override bool SupportsExport => false;
 
-        public override string FormatName
-        {
-            get { return "Firefox"; }
-        }
+        public override string FormatName => "Firefox";
 
+        /// <inheritdoc />
+        public override string DefaultExtension => "xml";
 
+        /// <inheritdoc />
+        public override string ApplicationGroup => KPRes.Browser;
 
-        public override bool ImportAppendsToRootGroupOnly { get { return false; } }
+        /// <inheritdoc />
+        public override bool ImportAppendsToRootGroupOnly => false;
 
+        /// <remarks>
+        /// Data is retrieved directly from Firefox
+        /// </remarks>
+        public override bool RequiresFile => false;
 
-        /// <summary>
-        /// directly gets data from firefox
-        /// </summary>
-        public override bool RequiresFile
-        {
-            get
-            {
-                return false;
-            }
-        }
+        /// <remarks>
+        /// Should get a Firefox icon.
+        /// </remarks>
+        public override System.Drawing.Image SmallIcon => Resources.firefox16;
 
-        /// <summary>
-        /// Should get a firefox icon
-        /// </summary>
-        public override System.Drawing.Image SmallIcon
-        {
-            get
-            {
-                return Resources.firefox16;
-            }
-        }
-
-        /// <summary>
-        /// The main routine, called when import is selected
-        /// </summary>
-        /// <param name="pwStorage"></param>
-        /// <param name="sInput"></param>
-        /// <param name="slLogger"></param>
-        public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, KeePassLib.Interfaces.IStatusLogger slLogger)
+        /// <inheritdoc />
+        public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, IStatusLogger slLogger)
         {
             try
             {
@@ -325,20 +299,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                 if (ex.Message.Contains("Failed to Validate Password"))
                     MessageBox.Show(ex.Message, "Import Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                {
-                    ErrorMessage.ShowErrorMessage("Importer", "Import Failed", ex);
-                }
+                    ErrorDialog.Show("Import Failed", ex);
             }
-        }
-
-        public override bool SupportsExport
-        {
-            get { return false; }
-        }
-
-        public override bool SupportsImport
-        {
-            get { return true; }
         }
     }
 }
