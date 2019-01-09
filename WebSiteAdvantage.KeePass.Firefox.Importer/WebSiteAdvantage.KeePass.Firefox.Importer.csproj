@@ -1,49 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}</ProjectGuid>
+    <ProjectGuid>{015E16A8-526E-43C7-9E80-8ED2B4A163EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebSiteAdvantage.KeePass.Firefox.Importer</RootNamespace>
-    <AssemblyName>WebSiteAdvantageKeePassFirefoxImporter</AssemblyName>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
-    <StartupObject>
-    </StartupObject>
+    <AssemblyName>WebSiteAdvantage.KeePass.Firefox.Importer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>2.0</OldToolsVersion>
-    <UpgradeBackupLocation />
-    <PublishUrl>http://localhost/ClockWorkKeePassFirefoxImporter/</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Web</InstallFrom>
-    <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>true</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -62,56 +29,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release64|AnyCPU' ">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
-    <OutputPath>bin\x64\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release64|x64' ">
-    <OutputPath>bin\x64\Release64\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="KeePass, Version=2.19.0.18206, Culture=neutral, PublicKeyToken=fed2ed7716aecf5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <ExecutableExtension>.exe</ExecutableExtension>
-      <HintPath>KeePassLibs\2.23\KeePass.exe</HintPath>
-    </Reference>
-    <Reference Include="KeePass.XmlSerializers, Version=2.19.0.18206, Culture=neutral, PublicKeyToken=fed2ed7716aecf5c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>KeePassLibs\2.23\KeePass.XmlSerializers.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormXml.cs">
@@ -163,36 +92,15 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj">
-      <Project>{C2CE32F2-A994-4645-92AB-EF89A13BD422}</Project>
+    <ProjectReference Include="..\KeePass\KeePass\KeePass.csproj">
+      <Project>{10938016-dee2-4a25-9a5a-8fd3444379ca}</Project>
+      <Name>KeePass</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj">
+      <Project>{c2ce32f2-a994-4645-92ab-ef89a13bd422}</Project>
       <Name>WebSiteAdvantage.KeePass.Firefox</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
-      <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
