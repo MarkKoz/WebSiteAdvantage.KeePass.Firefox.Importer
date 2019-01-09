@@ -1,6 +1,7 @@
 /*
  * WebSiteAdvantage KeePass to Firefox
  *
+ * Copyright (C) 2019 Mark Kozlov
  * Copyright (C) 2008 - 2012 Anthony James McCreath
  *
  * This library is free software; you can redistribute it and/or
@@ -18,30 +19,27 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System.Diagnostics;
-
 using KeePass;
 using KeePass.Plugins;
 
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     /// <summary>
-    /// Registers the plugin/extension with KeePass
+    /// Registers the plugin with KeePass.
     /// </summary>
-    public sealed class WebSiteAdvantageKeePassFirefoxImporterExt : Plugin
+    public sealed class ImporterPlugin : Plugin
     {
-        private IPluginHost m_host = null;
+        private IPluginHost host = null;
 
         public override bool Initialize(IPluginHost host)
         {
-            Debug.Assert(host != null);
-            if (host == null) return false;
-            m_host = host;
+            if (host == null)
+                return false;
 
-
+            this.host = host;
             Program.FileFormatPool.Add(FirefoxFormatImporter.Instance);
 
-            return true; // Initialization successful
+            return true; // Initialisation successful.
         }
 
         public override void Terminate()

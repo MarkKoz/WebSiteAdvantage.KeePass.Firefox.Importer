@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FireFoxFormatImporter.cs" />
-    <Compile Include="FireFoxImporterExt.cs" />
+    <Compile Include="ImporterPlugin.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
