@@ -18,21 +18,12 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using KeePass.Plugins;
-using KeePassLib.Security;
-using KeePassLib;
-using System.Windows.Forms;
-using System.Xml;
-using System.Text.RegularExpressions;
 using System.Diagnostics;
-using KeePass.DataExchange;
-using KeePass.Resources;
-using KeePass;
 
-namespace WebSiteAdvantageKeePassFirefoxImporter
+using KeePass;
+using KeePass.Plugins;
+
+namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     /// <summary>
     /// Registers the plugin/extension with KeePass

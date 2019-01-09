@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-namespace WebSiteAdvantageKeePassFirefoxImporter
+namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     partial class FormXml
     {

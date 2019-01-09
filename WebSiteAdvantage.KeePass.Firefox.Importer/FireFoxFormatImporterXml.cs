@@ -19,27 +19,19 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-
-using KeePass.Plugins;
-using KeePassLib.Security;
-using KeePassLib;
 using System.Windows.Forms;
 using System.Xml;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
+
 using KeePass.DataExchange;
 using KeePass.Resources;
-using System.Net;
-using System.IO;
-using KeePassLib.Interfaces;
-using System.Web;
-using WebSiteAdvantage.KeePass.Firefox;
-using WebSiteAdvantage.KeePass.Firefox.Importer.Properties;
-using WebSiteAdvantage.KeePass.Firefox.Importer;
 
-namespace WebSiteAdvantageKeePassFirefoxImporter
+using KeePassLib;
+using KeePassLib.Interfaces;
+using KeePassLib.Security;
+
+using WebSiteAdvantage.KeePass.Firefox.Importer.Properties;
+
+namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     /// <summary>
     /// A singleton class that performs the import
