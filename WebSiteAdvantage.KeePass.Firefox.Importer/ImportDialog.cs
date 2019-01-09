@@ -20,15 +20,24 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 using KeePassLib;
+
+using WebSiteAdvantage.KeePass.Firefox.Extensions;
+using WebSiteAdvantage.KeePass.Firefox.Profiles;
 
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     public partial class ImportDialog : Form
     {
+        public static readonly Version Version = Assembly.GetAssembly(typeof(ProfileParser)).GetName().Version;
+
         public ImportDialog()
         {
             InitializeComponent();
@@ -36,194 +45,120 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.comboIcon.SelectedIndex = 16;
         }
 
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public string IconName
-        {
-            get { return this.comboIcon.SelectedItem.ToString(); }
-        }
-
-
-        public PwGroup Group
-        {
-            get
-            {
-                if (this.comboGroup.SelectedItem is KeePassHelper.GroupItem)
-                    return ((KeePassHelper.GroupItem)this.comboGroup.SelectedItem).Group;
-
-                return null;
-            }
-        }
-
-        public string Password
-        {
-            get { return this.textPassword.Text; }
-        }
-
-
-        public bool GetTitles
-        {
-            get
-            {
-                return this.checkInternetTitles.Checked;
-            }
-        }
-
-        public bool IncludeImportNotes
-        {
-            get
-            {
-                return this.checkNotes.Checked;
-            }
-        }
-        public bool AddAutoType
-        {
-            get
-            {
-                return this.checkAutoType.Checked;
-            }
-        }
-        public bool Merge
-        {
-            get
-            {
-                return this.checkExisting.Checked;
-            }
-        }
-        public bool Overwrite
-        {
-            get
-            {
-                return this.checkOverwite.Checked;
-            }
-        }
-
-        public string ProfilePath
-        {
-            get
-            {
-                if (this.comboProfile.SelectedItem == null)
-                    return null;
-                return ((FirefoxProfileInfo)this.comboProfile.SelectedItem).AbsolutePath;
-            }
-        }
-
-
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepassfirefox&utm_medium=application&utm_content=link&utm_campaign=importer-" + KeePassUtilities.Version);
-        }
-
-        private void checkBoxTitle_CheckedChanged(object sender, EventArgs e)
-        {
-//			this.checkBoxAutoType.Enabled = this.checkBoxTitle.Checked;
-        }
-
-        private void checkBoxCheckExisting_CheckedChanged(object sender, EventArgs e)
-        {
-            this.checkOverwite.Enabled = this.checkExisting.Checked;
-        }
-
-        private void buttonHelp_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepassfirefox&utm_medium=application&utm_content=help&utm_campaign=importer-" + KeePassUtilities.Version);
-
-        }
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            List<FirefoxProfileInfo> profiles = FirefoxProfileInfo.FindFirefoxProfileInfos();
-            this.comboProfile.DataSource = profiles;
-            this.comboProfile.DisplayMember = "Name";
-
-            this.Text = "Web Site Advantage Firefox to KeePass Importer (" + KeePassUtilities.Version + ")";
-
-            foreach (FirefoxProfileInfo profile in profiles)
-            {
-                if (profile.Default)
-                {
-                    this.comboProfile.SelectedItem = profile;
-                    break;
-                }
-            }
-
-        }
-
-
         public void Initialise(PwDatabase pwStorage)
         {
             KeePassHelper.InitialiseGroupComboBox(this.comboGroup, pwStorage);
         }
 
-        private void buttonFindProfiles_Click(object sender, EventArgs e)
+        #region Properties
+
+        public string IconName => this.comboIcon.SelectedItem.ToString();
+
+        public PwGroup Group => (this.comboGroup.SelectedItem as KeePassHelper.GroupItem)?.Group;
+
+        public string Password => this.textPassword.Text;
+
+        public bool GetTitles => this.checkInternetTitles.Checked;
+
+        public bool IncludeImportNotes => this.checkNotes.Checked;
+
+        public bool AddAutoType => this.checkAutoType.Checked;
+
+        public bool Merge => this.checkExisting.Checked;
+
+        public bool Overwrite => this.checkOverwite.Checked;
+
+        public string ProfilePath => (this.comboProfile.SelectedItem as ProfileInfo)?.AbsolutePath;
+
+        #endregion
+
+        #region Event Handlers
+
+        private void FormLoadEventHandler(object sender, EventArgs e)
         {
+            this.Text = $"Web Site Advantage Firefox to KeePass Importer ({Version})";
 
+            IEnumerable<string> paths = ProfileParser.GetProfilePaths();
+            ProfileInfo[] profiles = ProfileParser.GetProfiles(paths).SkipExceptions().ToArray();
+
+            this.comboProfile.DataSource = new ObservableCollection<ProfileInfo>(profiles);
+            this.comboProfile.DisplayMember = "Name";
+            this.comboProfile.SelectedItem = ProfileParser.GetPrimaryProfile(profiles);
+        }
+
+        private void InternetTitlesCheckedEventHandler(object sender, EventArgs e)
+        {
+//			this.checkBoxAutoType.Enabled = this.checkBoxTitle.Checked;
+        }
+
+        private void ExistingCheckedEventHandler(object sender, EventArgs e)
+        {
+            this.checkOverwite.Enabled = this.checkExisting.Checked;
+        }
+
+        private void LoadProfilesClickedEventHandler(object sender, EventArgs e)
+        {
             DialogResult result = MessageBox.Show(
-                "Yes - If you wish to load profiles via the profiles ini file." + Environment.NewLine +
-                "No  - To directly select a profiles folder.",
-                "Load Profiles ini file?",
-                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-
+                "Should profiles be loaded using the profiles.ini file? " +
+                "If not, the path to the profile directory will need to be specified.",
+                "Load Profiles",
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1
+            );
 
             if (result == DialogResult.Yes)
             {
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-                openFileDialog1.Title = "Select a Firefox Profiles.ini file";
-                openFileDialog1.Filter = "INI files (*.ini)|*.ini|All files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 1;
-                //   openFileDialog1.RestoreDirectory = true;
-
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                var dialog = new OpenFileDialog
                 {
-                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboProfile.DataSource;
-                    FirefoxProfileInfo.FindFirefoxProfileInfosFromIniFile(openFileDialog1.FileName, list);
+                    Title = "Select a Firefox profiles.ini file",
+                    Filter = "INI files (*.ini)|*.ini|All files (*.*)|*.*",
+                    FilterIndex = 1
+                };
 
-                    // get it to refresh!
-                    this.comboProfile.DataSource = null;
-                    this.comboProfile.DataSource = list;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var profiles = (ObservableCollection<ProfileInfo>) this.comboProfile.DataSource;
+
+                    foreach (ProfileInfo profile in ProfileParser.GetProfiles(dialog.FileNames).SkipExceptions())
+                    {
+                        profiles.Add(profile);
+                    }
                 }
             }
-
-            if (result == DialogResult.No)
+            else if (result == DialogResult.No)
             {
-                FolderBrowserDialog openFolderDialog1 = new FolderBrowserDialog();
-
-                openFolderDialog1.Description = "Select a Firefox Profile folder";
-                openFolderDialog1.ShowNewFolderButton = false;
-
-
-                if (openFolderDialog1.ShowDialog() == DialogResult.OK)
+                var dialog = new FolderBrowserDialog
                 {
+                    Description = "Select a Firefox Profile folder",
+                    ShowNewFolderButton = false
+                };
 
-                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboProfile.DataSource;
-                    FirefoxProfileInfo profile = new FirefoxProfileInfo();
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var profiles = (ObservableCollection<ProfileInfo>) this.comboProfile.DataSource;
+                    string dirName = new DirectoryInfo(dialog.SelectedPath).Name;
+                    var profile = new ProfileInfo
+                    {
+                        Name = dirName.Substring(dirName.IndexOf('.') + 1),
+                        Path = dialog.SelectedPath,
+                        Default = false,
+                        IsRelative = false
+                    };
 
-                    profile.Name = openFolderDialog1.SelectedPath.Substring(openFolderDialog1.SelectedPath.LastIndexOf(@"\") + 1);
-                    profile.Path = openFolderDialog1.SelectedPath;
-                    profile.Default = false;
-                    profile.IsRelative = false;
-
-                    list.Add(profile);
-
-                    // get it to refresh!
-                    this.comboProfile.DataSource = null;
-                    this.comboProfile.DataSource = list;
+                    profiles.Add(profile);
+                    this.comboProfile.SelectedItem = profile;
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LinkClickedEventHandler(object sender, EventArgs e)
         {
-            Process.Start("https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepassfirefox&utm_medium=application&utm_content=help&utm_campaign=importerdonate-" + KeePassUtilities.Version);
+            var control = sender as Control;
 
+            Process.Start(control?.Tag.ToString() + Version);
         }
 
+        #endregion
     }
 }

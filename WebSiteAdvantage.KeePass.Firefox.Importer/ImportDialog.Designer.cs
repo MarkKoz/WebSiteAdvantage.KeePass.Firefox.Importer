@@ -163,7 +163,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.checkExisting.TabIndex = 0;
             this.checkExisting.Text = "Check for existing entries";
             this.checkExisting.UseVisualStyleBackColor = true;
-            this.checkExisting.CheckedChanged += new System.EventHandler(this.checkBoxCheckExisting_CheckedChanged);
+            this.checkExisting.CheckedChanged += new System.EventHandler(this.ExistingCheckedEventHandler);
             //
             // groupInternet
             //
@@ -187,7 +187,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.checkInternetTitles.TabIndex = 0;
             this.checkInternetTitles.Text = "Get Titles from websites";
             this.checkInternetTitles.UseVisualStyleBackColor = true;
-            this.checkInternetTitles.CheckedChanged += new System.EventHandler(this.checkBoxTitle_CheckedChanged);
+            this.checkInternetTitles.CheckedChanged += new System.EventHandler(this.InternetTitlesCheckedEventHandler);
             //
             // groupWarning
             //
@@ -241,7 +241,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.buttonLoadProfiles.Text = "Load More Profiles...";
             this.buttonLoadProfiles.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonLoadProfiles.UseVisualStyleBackColor = true;
-            this.buttonLoadProfiles.Click += new System.EventHandler(this.buttonFindProfiles_Click);
+            this.buttonLoadProfiles.Click += new System.EventHandler(this.LoadProfilesClickedEventHandler);
             //
             // comboProfile
             //
@@ -465,8 +465,10 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.linkHome.Size = new System.Drawing.Size(35, 13);
             this.linkHome.TabIndex = 26;
             this.linkHome.TabStop = true;
+            this.linkHome.Tag = "https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepas" +
+    "sfirefox&utm_medium=application&utm_content=link&utm_campaign=importer-";
             this.linkHome.Text = "Home";
-            this.linkHome.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkHome.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkClickedEventHandler);
             //
             // labelDescription
             //
@@ -499,10 +501,12 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.buttonBeer.Name = "buttonBeer";
             this.buttonBeer.Size = new System.Drawing.Size(110, 23);
             this.buttonBeer.TabIndex = 34;
+            this.buttonBeer.Tag = "https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepas" +
+    "sfirefox&utm_medium=application&utm_content=help&utm_campaign=importerdonate-";
             this.buttonBeer.Text = "Buy me a Beer...";
             this.buttonBeer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonBeer.UseVisualStyleBackColor = true;
-            this.buttonBeer.Click += new System.EventHandler(this.button1_Click);
+            this.buttonBeer.Click += new System.EventHandler(this.LinkClickedEventHandler);
             //
             // buttonHelp
             //
@@ -513,10 +517,12 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(65, 23);
             this.buttonHelp.TabIndex = 31;
+            this.buttonHelp.Tag = "https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepas" +
+    "sfirefox&utm_medium=application&utm_content=help&utm_campaign=importer-";
             this.buttonHelp.Text = "Help...";
             this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buttonHelp.UseVisualStyleBackColor = true;
-            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            this.buttonHelp.Click += new System.EventHandler(this.LinkClickedEventHandler);
             //
             // buttonStart
             //
@@ -551,7 +557,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.Name = "ImportDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Web Site Advantage Firefox to KeePass Importer";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.FormLoadEventHandler);
             this.tabSettings.ResumeLayout(false);
             this.pageSettings.ResumeLayout(false);
             this.groupMerging.ResumeLayout(false);
