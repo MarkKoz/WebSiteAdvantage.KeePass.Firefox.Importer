@@ -1,3 +1,23 @@
+/*
+ * WebSiteAdvantage KeePass to Firefox
+ *
+ * Copyright (C) 2008 - 2012 Anthony James McCreath
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
 namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     partial class FormXml
@@ -62,9 +82,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
-			// 
+			//
 			// ButtonStart
-			// 
+			//
 			this.ButtonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.ButtonStart.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.ButtonStart.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.FormRunHS;
@@ -76,9 +96,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.ButtonStart.TabIndex = 0;
 			this.ButtonStart.Text = "Start";
 			this.ButtonStart.UseVisualStyleBackColor = true;
-			// 
+			//
 			// buttonCancel
-			// 
+			//
 			this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.buttonCancel.Location = new System.Drawing.Point(538, 428);
@@ -87,9 +107,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.buttonCancel.TabIndex = 1;
 			this.buttonCancel.Text = "Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
-			// 
+			//
 			// tabControl1
-			// 
+			//
 			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
 						| System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
@@ -99,9 +119,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.tabControl1.SelectedIndex = 0;
 			this.tabControl1.Size = new System.Drawing.Size(586, 334);
 			this.tabControl1.TabIndex = 21;
-			// 
+			//
 			// tabPage1
-			// 
+			//
 			this.tabPage1.Controls.Add(this.groupBox6);
 			this.tabPage1.Controls.Add(this.groupBox5);
 			this.tabPage1.Controls.Add(this.groupBox3);
@@ -112,9 +132,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.tabPage1.TabIndex = 0;
 			this.tabPage1.Text = "Settings";
 			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
+			//
 			// groupBox6
-			// 
+			//
 			this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox6.Controls.Add(this.checkBoxOverwite);
@@ -125,9 +145,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.groupBox6.TabIndex = 29;
 			this.groupBox6.TabStop = false;
 			this.groupBox6.Text = "Merging";
-			// 
+			//
 			// checkBoxOverwite
-			// 
+			//
 			this.checkBoxOverwite.AutoSize = true;
 			this.checkBoxOverwite.Location = new System.Drawing.Point(15, 44);
 			this.checkBoxOverwite.Name = "checkBoxOverwite";
@@ -135,9 +155,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.checkBoxOverwite.TabIndex = 1;
 			this.checkBoxOverwite.Text = "Overwrite passwords (requires above check)";
 			this.checkBoxOverwite.UseVisualStyleBackColor = true;
-			// 
+			//
 			// checkBoxCheckExisting
-			// 
+			//
 			this.checkBoxCheckExisting.AutoSize = true;
 			this.checkBoxCheckExisting.Checked = true;
 			this.checkBoxCheckExisting.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -148,9 +168,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.checkBoxCheckExisting.Text = "Check for existing entries";
 			this.checkBoxCheckExisting.UseVisualStyleBackColor = true;
 			this.checkBoxCheckExisting.CheckedChanged += new System.EventHandler(this.checkBoxCheckExisting_CheckedChanged);
-			// 
+			//
 			// groupBox5
-			// 
+			//
 			this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox5.Controls.Add(this.checkBoxTitle);
@@ -161,9 +181,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.groupBox5.TabIndex = 28;
 			this.groupBox5.TabStop = false;
 			this.groupBox5.Text = "Internet Access";
-			// 
+			//
 			// checkBoxTitle
-			// 
+			//
 			this.checkBoxTitle.AutoSize = true;
 			this.checkBoxTitle.Location = new System.Drawing.Point(15, 19);
 			this.checkBoxTitle.Name = "checkBoxTitle";
@@ -172,9 +192,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.checkBoxTitle.Text = "Get Titles from websites";
 			this.checkBoxTitle.UseVisualStyleBackColor = true;
 			this.checkBoxTitle.CheckedChanged += new System.EventHandler(this.checkBoxTitle_CheckedChanged);
-			// 
+			//
 			// groupBox1
-			// 
+			//
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox1.BackColor = System.Drawing.Color.Transparent;
 			this.groupBox1.Controls.Add(this.label1);
@@ -185,9 +205,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.groupBox1.TabIndex = 23;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Warning";
-			// 
+			//
 			// label1
-			// 
+			//
 			this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.label1.ForeColor = System.Drawing.Color.Maroon;
 			this.label1.Location = new System.Drawing.Point(3, 16);
@@ -195,9 +215,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.label1.Size = new System.Drawing.Size(146, 43);
 			this.label1.TabIndex = 20;
 			this.label1.Text = "You have to trust me if you allow this plugin to access the internet!";
-			// 
+			//
 			// groupBox3
-			// 
+			//
 			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.groupBox3.Controls.Add(this.comboBoxGroup);
@@ -213,9 +233,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.groupBox3.TabIndex = 26;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "KeePass";
-			// 
+			//
 			// checkBoxIncludeImportNotes
-			// 
+			//
 			this.checkBoxIncludeImportNotes.AutoSize = true;
 			this.checkBoxIncludeImportNotes.Checked = true;
 			this.checkBoxIncludeImportNotes.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -225,9 +245,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.checkBoxIncludeImportNotes.TabIndex = 3;
 			this.checkBoxIncludeImportNotes.Text = "Include Import Notes";
 			this.checkBoxIncludeImportNotes.UseVisualStyleBackColor = true;
-			// 
+			//
 			// checkBoxAutoType
-			// 
+			//
 			this.checkBoxAutoType.AutoSize = true;
 			this.checkBoxAutoType.Checked = true;
 			this.checkBoxAutoType.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -237,9 +257,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.checkBoxAutoType.TabIndex = 2;
 			this.checkBoxAutoType.Text = "Add Auto-Type entries";
 			this.checkBoxAutoType.UseVisualStyleBackColor = true;
-			// 
+			//
 			// pictureBox2
-			// 
+			//
 			this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.keepasslogo_512;
 			this.pictureBox2.Location = new System.Drawing.Point(469, 13);
@@ -248,9 +268,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBox2.TabIndex = 33;
 			this.pictureBox2.TabStop = false;
-			// 
+			//
 			// comboBoxIconName
-			// 
+			//
 			this.comboBoxIconName.FormattingEnabled = true;
 			this.comboBoxIconName.Items.AddRange(new object[] {
             "Key",
@@ -324,9 +344,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.comboBoxIconName.Size = new System.Drawing.Size(121, 21);
 			this.comboBoxIconName.TabIndex = 1;
 			this.comboBoxIconName.Text = "WorldStar";
-			// 
+			//
 			// label4
-			// 
+			//
 			this.label4.AutoSize = true;
 			this.label4.Location = new System.Drawing.Point(13, 46);
 			this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -334,18 +354,18 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.label4.Size = new System.Drawing.Size(28, 13);
 			this.label4.TabIndex = 11;
 			this.label4.Text = "Icon";
-			// 
+			//
 			// labelGroup
-			// 
+			//
 			this.labelGroup.AutoSize = true;
 			this.labelGroup.Location = new System.Drawing.Point(13, 22);
 			this.labelGroup.Name = "labelGroup";
 			this.labelGroup.Size = new System.Drawing.Size(67, 13);
 			this.labelGroup.TabIndex = 0;
 			this.labelGroup.Text = "Group Name";
-			// 
+			//
 			// linkLabel1
-			// 
+			//
 			this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.linkLabel1.AutoSize = true;
 			this.linkLabel1.BackColor = System.Drawing.Color.White;
@@ -356,9 +376,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.linkLabel1.TabStop = true;
 			this.linkLabel1.Text = "Home";
 			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-			// 
+			//
 			// label8
-			// 
+			//
 			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.label8.BackColor = System.Drawing.SystemColors.Window;
@@ -369,9 +389,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.label8.TabIndex = 0;
 			this.label8.Text = "This tool will import a file generated by the Firefox Password Exporter Extension" +
 				".";
-			// 
+			//
 			// listBox1
-			// 
+			//
 			this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
 						| System.Windows.Forms.AnchorStyles.Right)));
 			this.listBox1.FormattingEnabled = true;
@@ -379,9 +399,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(585, 69);
 			this.listBox1.TabIndex = 2;
-			// 
+			//
 			// buttonHelp
-			// 
+			//
 			this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonHelp.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.Help;
 			this.buttonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -393,9 +413,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.buttonHelp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.buttonHelp.UseVisualStyleBackColor = true;
 			this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-			// 
+			//
 			// linkLabelExporter
-			// 
+			//
 			this.linkLabelExporter.AutoSize = true;
 			this.linkLabelExporter.BackColor = System.Drawing.Color.White;
 			this.linkLabelExporter.Location = new System.Drawing.Point(19, 57);
@@ -405,9 +425,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.linkLabelExporter.TabStop = true;
 			this.linkLabelExporter.Text = "Firefox Password Exporter Extension";
 			this.linkLabelExporter.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelExporter_LinkClicked);
-			// 
+			//
 			// button1
-			// 
+			//
 			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.beer3;
 			this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -419,17 +439,17 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 			this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
-			// 
+			//
 			// comboBoxGroup
-			// 
+			//
 			this.comboBoxGroup.FormattingEnabled = true;
 			this.comboBoxGroup.Location = new System.Drawing.Point(107, 16);
 			this.comboBoxGroup.Name = "comboBoxGroup";
 			this.comboBoxGroup.Size = new System.Drawing.Size(282, 21);
 			this.comboBoxGroup.TabIndex = 0;
-			// 
+			//
 			// FormXml
-			// 
+			//
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(610, 463);

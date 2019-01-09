@@ -1,19 +1,21 @@
-/*	WebSiteAdvantage KeePass to Firefox 
- *	Copyright (C) 2008 - 2012 Anthony James McCreath
+/*
+ * WebSiteAdvantage KeePass to Firefox
  *
- *	This library is free software; you can redistribute it and/or
- *	modify it under the terms of the GNU Lesser General Public
- *	License as published by the Free Software Foundation; either
- *	version 2.1 of the License, or (at your option) any later version.
+ * Copyright (C) 2008 - 2012 Anthony James McCreath
  *
- *	This library is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *	Lesser General Public License for more details.
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
  *
- *	You should have received a copy of the GNU Lesser General Public
- *	License along with this library; if not, write to the Free Software
- *	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 using System;
@@ -69,7 +71,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         }
 
 		/// <summary>
-		/// 
+		///
 		/// </summary>
         public override string DefaultExtension
         {
@@ -213,8 +215,8 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                                 notes += "Imported from FireFox by the Web Site Advantage FireFox to KeePass Importer" + Environment.NewLine;
                             }
 
-                            string url = String.Empty; 
-                            
+                            string url = String.Empty;
+
                             if (hostNode!=null)
                                 url = hostNode.InnerText;
 
@@ -277,7 +279,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                                 pe.Expires = false;
                                 pe.IconId = iconId;
 
-                                // Gatter any extra information... 
+                                // Gatter any extra information...
 
                                 if (fireFoxEntryElement.HasAttribute("userFieldName") && fireFoxEntryElement.GetAttribute("userFieldName").Length > 0)
                                     pe.Strings.Set("UserNameField", new ProtectedString(false, fireFoxEntryElement.GetAttribute("userFieldName")));

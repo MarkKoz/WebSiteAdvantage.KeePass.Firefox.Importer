@@ -1,19 +1,21 @@
-/*	WebSiteAdvantage KeePass to Firefox 
- *	Copyright (C) 2008 - 2012 Anthony James McCreath
+/*
+ * WebSiteAdvantage KeePass to Firefox
  *
- *	This library is free software; you can redistribute it and/or
- *	modify it under the terms of the GNU Lesser General Public
- *	License as published by the Free Software Foundation; either
- *	version 2.1 of the License, or (at your option) any later version.
+ * Copyright (C) 2008 - 2012 Anthony James McCreath
  *
- *	This library is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *	Lesser General Public License for more details.
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
  *
- *	You should have received a copy of the GNU Lesser General Public
- *	License along with this library; if not, write to the Free Software
- *	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 using System;
@@ -26,7 +28,7 @@ using KeePassLib.Collections;
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
 	/// <summary>
-	/// common methods to help use keepass. 
+	/// common methods to help use keepass.
 	/// these use the 2.0 dll so are specific to this project
 	/// </summary>
 	public class KeePassHelper
@@ -44,7 +46,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 			foreach (PwEntry entry in group.Entries)
 			{
 
-				if (entry.Strings !=null && 
+				if (entry.Strings !=null &&
 					entry.Strings.Get(PwDefs.UrlField) != null &&
 					entry.Strings.Get(PwDefs.UrlField).ReadString() == url &&
 					entry.Strings.Get(PwDefs.UserNameField)!=null &&
