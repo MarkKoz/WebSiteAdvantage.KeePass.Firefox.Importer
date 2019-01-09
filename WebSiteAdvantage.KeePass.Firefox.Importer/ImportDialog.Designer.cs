@@ -532,7 +532,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.ButtonStart.Text = "Start";
             this.ButtonStart.UseVisualStyleBackColor = true;
             //
-            // ImportDialog
+            // Form1
             //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -548,7 +548,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(544, 581);
-            this.Name = "ImportDialog";
+            this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Web Site Advantage Firefox to KeePass Importer";
             this.Load += new System.EventHandler(this.Form1_Load);

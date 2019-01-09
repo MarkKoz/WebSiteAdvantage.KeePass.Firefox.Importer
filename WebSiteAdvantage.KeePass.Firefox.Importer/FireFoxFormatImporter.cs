@@ -111,7 +111,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             try
             {
-                Form1 form = new Form1();
+                ImportDialog form = new ImportDialog();
 
                 form.Initialise(pwStorage);
 

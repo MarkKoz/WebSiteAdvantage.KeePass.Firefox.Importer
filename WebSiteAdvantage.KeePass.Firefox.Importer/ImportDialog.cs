@@ -27,9 +27,9 @@ using KeePassLib;
 
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
-    public partial class Form1 : Form
+    public partial class ImportDialog : Form
     {
-        public Form1()
+        public ImportDialog()
         {
             InitializeComponent();
 
