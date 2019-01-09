@@ -41,38 +41,38 @@ using WebSiteAdvantage.KeePass.Firefox.Importer;
 
 namespace WebSiteAdvantageKeePassFirefoxImporter
 {
-	/// <summary>
-	/// A singleton class that performs the import
-	/// </summary>
-	public sealed class FirefoxFormatImporterXml : FileFormatProvider
+    /// <summary>
+    /// A singleton class that performs the import
+    /// </summary>
+    public sealed class FirefoxFormatImporterXml : FileFormatProvider
     {
-		private static FirefoxFormatImporterXml _Instance = null;
+        private static FirefoxFormatImporterXml _Instance = null;
         /// <summary>
         /// So can access a single common copy of the importer (Singleton)
         /// </summary>
-		public static FirefoxFormatImporterXml Instance
+        public static FirefoxFormatImporterXml Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-					_Instance = new FirefoxFormatImporterXml();
+                    _Instance = new FirefoxFormatImporterXml();
                 }
                 return _Instance;
             }
         }
 
-		/// <summary>
-		/// The type of import
-		/// </summary>
+        /// <summary>
+        /// The type of import
+        /// </summary>
         public override string ApplicationGroup
         {
             get { return KPRes.Browser; }
         }
 
-		/// <summary>
-		///
-		/// </summary>
+        /// <summary>
+        ///
+        /// </summary>
         public override string DefaultExtension
         {
             get { return "xml"; }
@@ -90,34 +90,34 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         public override bool ImportAppendsToRootGroupOnly { get { return false; } }
 
 
-		/// <summary>
-		/// directly gets data from firefox
-		/// </summary>
-		public override bool RequiresFile
-		{
-			get
-			{
-				return true;
-			}
-		}
+        /// <summary>
+        /// directly gets data from firefox
+        /// </summary>
+        public override bool RequiresFile
+        {
+            get
+            {
+                return true;
+            }
+        }
 
-		/// <summary>
-		/// Should get a firefox icon
-		/// </summary>
-		public override System.Drawing.Image SmallIcon
-		{
-			get
-			{
-				return Resources.firefox16;
-			}
-		}
+        /// <summary>
+        /// Should get a firefox icon
+        /// </summary>
+        public override System.Drawing.Image SmallIcon
+        {
+            get
+            {
+                return Resources.firefox16;
+            }
+        }
 
-		/// <summary>
-		/// The main routine, called when import is selected
-		/// </summary>
-		/// <param name="pwStorage"></param>
-		/// <param name="sInput"></param>
-		/// <param name="slLogger"></param>
+        /// <summary>
+        /// The main routine, called when import is selected
+        /// </summary>
+        /// <param name="pwStorage"></param>
+        /// <param name="sInput"></param>
+        /// <param name="slLogger"></param>
         public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, KeePassLib.Interfaces.IStatusLogger slLogger)
         {
             try

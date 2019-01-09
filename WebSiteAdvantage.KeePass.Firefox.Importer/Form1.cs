@@ -40,7 +40,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         {
             InitializeComponent();
 
-			this.comboBoxIconName.SelectedIndex = 16;
+            this.comboBoxIconName.SelectedIndex = 16;
         }
 
 
@@ -49,27 +49,27 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
         }
 
-		public string IconName
-		{
-			get { return this.comboBoxIconName.SelectedItem.ToString(); }
-		}
+        public string IconName
+        {
+            get { return this.comboBoxIconName.SelectedItem.ToString(); }
+        }
 
 
-		public PwGroup Group
-		{
-			get
-			{
+        public PwGroup Group
+        {
+            get
+            {
                 if (this.comboBoxGroup.SelectedItem is KeePassHelper.GroupItem)
-				    return ((KeePassHelper.GroupItem)this.comboBoxGroup.SelectedItem).Group;
+                    return ((KeePassHelper.GroupItem)this.comboBoxGroup.SelectedItem).Group;
 
                 return null;
-			}
-		}
+            }
+        }
 
-		public string Password
-		{
-			get { return this.textBoxPassword.Text; }
-		}
+        public string Password
+        {
+            get { return this.textBoxPassword.Text; }
+        }
 
 
         public bool GetTitles
@@ -109,64 +109,64 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             }
         }
 
-		public string ProfilePath
-		{
-			get
-			{
+        public string ProfilePath
+        {
+            get
+            {
                 if (this.comboBoxProfile.SelectedItem == null)
                     return null;
-				return ((FirefoxProfileInfo)this.comboBoxProfile.SelectedItem).AbsolutePath;
-			}
-		}
+                return ((FirefoxProfileInfo)this.comboBoxProfile.SelectedItem).AbsolutePath;
+            }
+        }
 
 
 
-		private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
             Process.Start("https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepassfirefox&utm_medium=application&utm_content=link&utm_campaign=importer-" + KeePassUtilities.Version);
-		}
+        }
 
-		private void checkBoxTitle_CheckedChanged(object sender, EventArgs e)
-		{
+        private void checkBoxTitle_CheckedChanged(object sender, EventArgs e)
+        {
 //			this.checkBoxAutoType.Enabled = this.checkBoxTitle.Checked;
-		}
+        }
 
-		private void checkBoxCheckExisting_CheckedChanged(object sender, EventArgs e)
-		{
-			this.checkBoxOverwite.Enabled = this.checkBoxCheckExisting.Checked;
-		}
+        private void checkBoxCheckExisting_CheckedChanged(object sender, EventArgs e)
+        {
+            this.checkBoxOverwite.Enabled = this.checkBoxCheckExisting.Checked;
+        }
 
-		private void buttonHelp_Click(object sender, EventArgs e)
-		{
+        private void buttonHelp_Click(object sender, EventArgs e)
+        {
             Process.Start("https://websiteadvantage.com.au/Firefox-KeePass-Password-Import#utm_source=keepassfirefox&utm_medium=application&utm_content=help&utm_campaign=importer-" + KeePassUtilities.Version);
 
-		}
+        }
 
 
-		private void Form1_Load(object sender, EventArgs e)
-		{
-			List<FirefoxProfileInfo> profiles = FirefoxProfileInfo.FindFirefoxProfileInfos();
-			this.comboBoxProfile.DataSource = profiles;
-			this.comboBoxProfile.DisplayMember = "Name";
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            List<FirefoxProfileInfo> profiles = FirefoxProfileInfo.FindFirefoxProfileInfos();
+            this.comboBoxProfile.DataSource = profiles;
+            this.comboBoxProfile.DisplayMember = "Name";
 
             this.Text = "Web Site Advantage Firefox to KeePass Importer (" + KeePassUtilities.Version + ")";
 
-			foreach (FirefoxProfileInfo profile in profiles)
-			{
-				if (profile.Default)
-				{
-					this.comboBoxProfile.SelectedItem = profile;
-					break;
-				}
-			}
+            foreach (FirefoxProfileInfo profile in profiles)
+            {
+                if (profile.Default)
+                {
+                    this.comboBoxProfile.SelectedItem = profile;
+                    break;
+                }
+            }
 
-		}
+        }
 
 
-		public void Initialise(PwDatabase pwStorage)
-		{
-			KeePassHelper.InitialiseGroupComboBox(this.comboBoxGroup, pwStorage);
-		}
+        public void Initialise(PwDatabase pwStorage)
+        {
+            KeePassHelper.InitialiseGroupComboBox(this.comboBoxGroup, pwStorage);
+        }
 
         private void buttonFindProfiles_Click(object sender, EventArgs e)
         {

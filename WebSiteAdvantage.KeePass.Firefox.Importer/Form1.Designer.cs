@@ -572,37 +572,37 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
         #endregion
 
-		private System.Windows.Forms.Button ButtonStart;
+        private System.Windows.Forms.Button ButtonStart;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox textBoxPassword;
-		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.GroupBox groupBox5;
-		private System.Windows.Forms.GroupBox groupBoxFirefox;
-		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.CheckBox checkBoxCheckExisting;
-		private System.Windows.Forms.CheckBox checkBoxAutoType;
-		private System.Windows.Forms.CheckBox checkBoxTitle;
-		private System.Windows.Forms.Label labelGroup;
-		private System.Windows.Forms.CheckBox checkBoxOverwite;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox comboBoxIconName;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.LinkLabel linkLabel1;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.ListBox listBox1;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.PictureBox pictureBox2;
-		private System.Windows.Forms.Button buttonHelp;
-		private System.Windows.Forms.ComboBox comboBoxProfile;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBoxFirefox;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox checkBoxCheckExisting;
+        private System.Windows.Forms.CheckBox checkBoxAutoType;
+        private System.Windows.Forms.CheckBox checkBoxTitle;
+        private System.Windows.Forms.Label labelGroup;
+        private System.Windows.Forms.CheckBox checkBoxOverwite;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxIconName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.ComboBox comboBoxProfile;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonFindProfiles;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBoxIncludeImportNotes;
-		private System.Windows.Forms.ComboBox comboBoxGroup;
+        private System.Windows.Forms.ComboBox comboBoxGroup;
     }
 }

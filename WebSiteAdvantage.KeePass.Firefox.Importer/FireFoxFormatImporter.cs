@@ -41,9 +41,9 @@ using WebSiteAdvantage.KeePass.Firefox.Importer;
 
 namespace WebSiteAdvantageKeePassFirefoxImporter
 {
-	/// <summary>
-	/// A singleton class that performs the import
-	/// </summary>
+    /// <summary>
+    /// A singleton class that performs the import
+    /// </summary>
     public sealed class FirefoxFormatImporter : FileFormatProvider
     {
         private static FirefoxFormatImporter _Instance = null;
@@ -62,17 +62,17 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             }
         }
 
-		/// <summary>
-		/// The type of import
-		/// </summary>
+        /// <summary>
+        /// The type of import
+        /// </summary>
         public override string ApplicationGroup
         {
             get { return KPRes.Browser; }
         }
 
-		/// <summary>
-		/// xml
-		/// </summary>
+        /// <summary>
+        /// xml
+        /// </summary>
         public override string DefaultExtension
         {
             get { return "xml"; }
@@ -88,36 +88,36 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         public override bool ImportAppendsToRootGroupOnly { get { return false; } }
 
 
-		/// <summary>
-		/// directly gets data from firefox
-		/// </summary>
-		public override bool RequiresFile
-		{
-			get
-			{
-				return false;
-			}
-		}
+        /// <summary>
+        /// directly gets data from firefox
+        /// </summary>
+        public override bool RequiresFile
+        {
+            get
+            {
+                return false;
+            }
+        }
 
-		/// <summary>
-		/// Should get a firefox icon
-		/// </summary>
-		public override System.Drawing.Image SmallIcon
-		{
-			get
-			{
-				return Resources.firefox16;
-			}
-		}
+        /// <summary>
+        /// Should get a firefox icon
+        /// </summary>
+        public override System.Drawing.Image SmallIcon
+        {
+            get
+            {
+                return Resources.firefox16;
+            }
+        }
 
-		/// <summary>
-		/// The main routine, called when import is selected
-		/// </summary>
-		/// <param name="pwStorage"></param>
-		/// <param name="sInput"></param>
-		/// <param name="slLogger"></param>
-		public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, KeePassLib.Interfaces.IStatusLogger slLogger)
-		{
+        /// <summary>
+        /// The main routine, called when import is selected
+        /// </summary>
+        /// <param name="pwStorage"></param>
+        /// <param name="sInput"></param>
+        /// <param name="slLogger"></param>
+        public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, KeePassLib.Interfaces.IStatusLogger slLogger)
+        {
             try
             {
                 Form1 form = new Form1();
@@ -351,7 +351,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                     ErrorMessage.ShowErrorMessage("Importer", "Import Failed", ex);
                 }
             }
-		}
+        }
 
         public override bool SupportsExport
         {

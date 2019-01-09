@@ -34,10 +34,10 @@ using KeePass;
 
 namespace WebSiteAdvantageKeePassFirefoxImporter
 {
-	/// <summary>
-	/// Registers the plugin/extension with KeePass
-	/// </summary>
-	public sealed class WebSiteAdvantageKeePassFirefoxImporterExt : Plugin
+    /// <summary>
+    /// Registers the plugin/extension with KeePass
+    /// </summary>
+    public sealed class WebSiteAdvantageKeePassFirefoxImporterExt : Plugin
     {
         private IPluginHost m_host = null;
 
