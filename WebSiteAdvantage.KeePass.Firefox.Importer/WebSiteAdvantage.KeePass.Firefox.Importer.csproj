@@ -43,7 +43,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FireFoxFormatImporter.cs" />
+    <Compile Include="Importer.cs" />
     <Compile Include="ImporterPlugin.cs" />
     <Compile Include="ImportDialog.cs">
       <SubType>Form</SubType>

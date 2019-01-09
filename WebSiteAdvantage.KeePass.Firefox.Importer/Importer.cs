@@ -35,19 +35,19 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     /// <summary>
     /// A singleton class that performs the import
     /// </summary>
-    public sealed class FirefoxFormatImporter : FileFormatProvider
+    public sealed class Importer : FileFormatProvider
     {
-        private static FirefoxFormatImporter _Instance = null;
+        private static Importer _Instance = null;
         /// <summary>
         /// So can access a single common copy of the importer (Singleton)
         /// </summary>
-        public static FirefoxFormatImporter Instance
+        public static Importer Instance
         {
             get
             {
                 if (_Instance == null)
                 {
-                    _Instance = new FirefoxFormatImporter();
+                    _Instance = new Importer();
                 }
                 return _Instance;
             }

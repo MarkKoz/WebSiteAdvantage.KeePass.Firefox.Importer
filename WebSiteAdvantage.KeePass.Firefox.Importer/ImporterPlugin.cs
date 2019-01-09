@@ -37,14 +37,14 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                 return false;
 
             this.host = host;
-            Program.FileFormatPool.Add(FirefoxFormatImporter.Instance);
+            Program.FileFormatPool.Add(Importer.Instance);
 
             return true; // Initialisation successful.
         }
 
         public override void Terminate()
         {
-            Program.FileFormatPool.Remove(FirefoxFormatImporter.Instance);
+            Program.FileFormatPool.Remove(Importer.Instance);
         }
     }
 }
