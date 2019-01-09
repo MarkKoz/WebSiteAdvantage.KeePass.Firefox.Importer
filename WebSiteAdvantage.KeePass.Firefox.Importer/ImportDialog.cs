@@ -52,7 +52,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public PwGroup Group => (this.comboGroup.SelectedItem as KeePassHelper.GroupItem)?.Group;
 
-        public string IconName => this.comboIcon.SelectedItem.ToString();
+        public PwIcon EntryIcon => (PwIcon) Enum.Parse(typeof(PwIcon), (string) this.comboIcon.SelectedItem);
 
         public bool AddAutoType => this.checkAutoType.Checked;
 

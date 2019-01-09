@@ -84,17 +84,6 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                     string masterPassword = form.Password;
 
                     bool addAutoType = form.AddAutoType;
-                    PwIcon? iconId = null;
-
-                    if (!string.IsNullOrWhiteSpace(form.IconName))
-                    {
-                        try
-                        {
-                            iconId = (PwIcon)Enum.Parse(typeof(PwIcon), form.IconName);
-                        }
-                        catch (Exception) { } // not sure how None icon is represented
-                    }
-
                     string profilePath = form.ProfilePath;
 
                     if (String.IsNullOrEmpty(profilePath))
@@ -229,8 +218,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                                         pe.Strings.Set(PwDefs.NotesField, new ProtectedString(pwStorage.MemoryProtection.ProtectNotes, notes));
                                     pe.Expires = false;
 
-                                    if (iconId!=null)
-                                        pe.IconId = iconId.Value;
+                                    pe.IconId = form.EntryIcon;
 
                                     // Gatter any extra information...
 
