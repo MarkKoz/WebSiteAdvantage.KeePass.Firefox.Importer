@@ -19,6 +19,7 @@
  */
 
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 using KeePass.DataExchange;
@@ -29,6 +30,8 @@ using KeePassLib.Interfaces;
 using KeePassLib.Security;
 
 using WebSiteAdvantage.KeePass.Firefox.Importer.Properties;
+using WebSiteAdvantage.KeePass.Firefox.Profiles;
+using WebSiteAdvantage.KeePass.Firefox.Signons;
 using WebSiteAdvantage.KeePass.Firefox.Utilities;
 
 namespace WebSiteAdvantage.KeePass.Firefox.Importer
@@ -38,6 +41,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     /// </summary>
     public sealed class Importer : FileFormatProvider
     {
+        private const string Note = "Imported from FireFox by the Web Site Advantage FireFox to KeePass Importer";
         private static readonly Lazy<Importer> LazyImporter = new Lazy<Importer>();
 
         public static Importer Instance => LazyImporter.Value;
@@ -68,216 +72,49 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         public override System.Drawing.Image SmallIcon => Resources.firefox16;
 
         /// <inheritdoc />
-        public override void Import(PwDatabase pwStorage, System.IO.Stream sInput, IStatusLogger slLogger)
+        public override void Import(PwDatabase db, System.IO.Stream input, IStatusLogger logger)
         {
             try
             {
-                var form = new ImportDialog(pwStorage);
+                var form = new ImportDialog(db);
 
-                if (form.ShowDialog() == DialogResult.OK)
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                if (string.IsNullOrEmpty(form.ProfilePath))
                 {
+                    MessageBox.Show("No Profile Selected. Use Load More Profiles", "Profile Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Import(db, input, logger); // bit of a hack!
+                    return;
+                }
 
-                    // return;
-                    bool overwritePassword = form.Overwrite;
-                    bool searchWeb = form.GetTitles;
-                    bool checkMatches = form.Merge;
-                    string masterPassword = form.Password;
+                try
+                {
+                    logger.StartLogging("Importing Firefox Passwords", false);
+                    logger.SetText("Logging in.", LogStatusType.Info);
 
-                    bool addAutoType = form.AddAutoType;
-                    string profilePath = form.ProfilePath;
-
-                    if (String.IsNullOrEmpty(profilePath))
+                    using (var profile = new Profile(form.ProfilePath))
                     {
-                        MessageBox.Show("No Profile Selected. Use Load More Profiles", "Profile Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Import(pwStorage, sInput, slLogger); // bit of a hack!
-                        return;
-                    }
+                        logger.SetText("Reading signon file.", LogStatusType.Info);
+                        Signon[] signons = profile.GetSignons().ToArray();
 
-                    PwGroup group = form.Group;
+                        logger.SetText("Processing passwords.", LogStatusType.Info);
+                        var pos = 0;
 
-                    if (group == null)
-                        group = pwStorage.RootGroup;
-
-                    //     return;
-
-                    try
-                    {
-                        InternetAccessor internetAccessor = new InternetAccessor();
-
-                        slLogger.StartLogging("Importing Firefox Passwords", false);
-
-                        slLogger.SetText("Logging In", LogStatusType.Info);
-
-                        FirefoxProfile profile = new FirefoxProfile(profilePath);
-
-                        profile.Login(masterPassword);
-
-                        slLogger.SetText("Reading Signon file", LogStatusType.Info);
-
-
-                        FirefoxSignonsFile signonsFile = profile.GetSignonsFile(masterPassword);
-
-
-                        slLogger.SetText("Processing Passwords", LogStatusType.Info);
-
-                        int count = signonsFile.SignonSites.Count;
-                        int pos = 0;
-
-                        //  return;
-
-                        // Loop each entry and add it to KeePass
-                        foreach (FirefoxSignonSite signonSite in signonsFile.SignonSites)
+                        foreach (Signon signon in signons)
                         {
-                            // keep the user informed of progress
-                            pos++;
+                            if (!logger.ContinueWork()) // Check if process has been cancelled by the user.
+                                break;
 
-                            foreach (FirefoxSignon signon in signonSite.Signons)
-                            {
-                                if (!slLogger.ContinueWork()) // Check if process has been cancelled by the user
-                                    break;
-
-
-                                slLogger.SetProgress((uint)(100 * ((double)pos) / ((double)count)));
-
-
-                                string notes = String.Empty;
-
-                                if (form.IncludeNotes)
-                                {
-                                    notes += "Imported from FireFox by the Web Site Advantage FireFox to KeePass Importer" + Environment.NewLine;
-                                }
-
-                                // gather the data to import
-
-                                string title = signonSite.Site;
-
-                                // PATCH: supplied by Sarel Botha
-                                // remove protocol from site so that it works with new KeepassHTTP
-                                if (title.StartsWith("http://")) title = title.Substring(7);
-                                if (title.StartsWith("https://")) title = title.Substring(8);
-
-                                // remove port number if the title contains it so that it will work with new KeepassHTTP
-                                if (title.Contains(":")) title = title.Substring(0, title.IndexOf(':'));
-                                // PATCH END
-
-                                string url = signonSite.Site;
-
-                                if (!String.IsNullOrEmpty(signon.LoginFormDomain))
-                                {
-                                    title = signon.LoginFormDomain;
-                                    url = signon.LoginFormDomain;
-                                }
-
-                                string host = url;
-                                try
-                                {
-                                    Uri uri = new Uri(url);
-                                    host = uri.Host;
-                                }
-                                catch { }
-
-                                slLogger.SetText(title, LogStatusType.Info);
-
-
-                                string username = signon.UserName;
-
-                                bool newEntry = true;
-
-                                PwEntry pe = null;
-
-                                if (checkMatches)
-                                    pe = KeePassHelper.FindMatchingEntry(pwStorage.RootGroup, url, username);
-
-                                if (pe == null)
-                                {
-                                    // create a new entry
-
-                                    pe = new PwEntry(true, true);
-                                    group.AddEntry(pe, true);
-                                    slLogger.SetText("Created new entry", LogStatusType.AdditionalInfo);
-                                }
-                                else
-                                {
-                                    newEntry = false;
-                                    slLogger.SetText("Found matching entry", LogStatusType.AdditionalInfo);
-                                }
-
-                                if (newEntry || overwritePassword)
-                                {
-                                    // set the password
-                                    pe.Strings.Set(PwDefs.PasswordField, new ProtectedString(pwStorage.MemoryProtection.ProtectPassword, signon.Password));
-                                }
-
-                                if (newEntry)
-                                {
-                                    // set all fields
-                                    pe.Strings.Set(PwDefs.TitleField, new ProtectedString(pwStorage.MemoryProtection.ProtectTitle, title));
-                                    pe.Strings.Set(PwDefs.UserNameField, new ProtectedString(pwStorage.MemoryProtection.ProtectUserName, username));
-                                    pe.Strings.Set(PwDefs.UrlField, new ProtectedString(pwStorage.MemoryProtection.ProtectUrl, url));
-                                    if (!String.IsNullOrEmpty(notes))
-                                        pe.Strings.Set(PwDefs.NotesField, new ProtectedString(pwStorage.MemoryProtection.ProtectNotes, notes));
-                                    pe.Expires = false;
-
-                                    pe.IconId = form.EntryIcon;
-
-                                    // Gatter any extra information...
-
-                                    if (!String.IsNullOrEmpty(signon.UserNameField))
-                                        pe.Strings.Set("UserNameField", new ProtectedString(false, signon.UserNameField));
-
-                                    if (!String.IsNullOrEmpty(signon.PasswordField))
-                                        pe.Strings.Set("PasswordField", new ProtectedString(false, signon.PasswordField));
-
-                                    if (!String.IsNullOrEmpty(signon.LoginFormDomain))
-                                        pe.Strings.Set("LoginFormDomain", new ProtectedString(false, signon.LoginFormDomain));
-
-                                }
-
-                                string webTitle = null;
-
-                                // if new or the title is the same as the url then we should try and get the title
-                                if (searchWeb)
-                                {
-                                    // test if new or entry has url as title
-                                    if ((newEntry || pe.Strings.Get(PwDefs.TitleField).ReadString() == pe.Strings.Get(PwDefs.UrlField).ReadString()))
-                                    {
-                                        // get the pages title
-                                        slLogger.SetText("Accessing website for title", LogStatusType.AdditionalInfo);
-
-                                        webTitle = internetAccessor.ScrapeTitle(url);
-
-                                        if (!String.IsNullOrEmpty(webTitle))
-                                        {
-                                            slLogger.SetText("Title set from internet to " + webTitle, LogStatusType.AdditionalInfo);
-
-
-                                            pe.Strings.Set(PwDefs.TitleField, new ProtectedString(pwStorage.MemoryProtection.ProtectTitle, webTitle));
-                                        }
-                                    }
-                                    //else
-                                    //{
-                                    //    // Entry has a good title, keep it incase there are other ones for this site
-                                    //    title = pe.Strings.Get(PwDefs.TitleField).ReadString();
-                                    //}
-                                }
-                                // return;
-
-
-                                if (addAutoType)
-                                    KeePassHelper.InsertAutoType(pe, "*" + host + "*", KeePassUtilities.AutoTypeSequence());
-
-                                // return;
-
-                                if (webTitle != null && addAutoType)
-                                    KeePassHelper.InsertAutoType(pe, KeePassUtilities.AutoTypeWindow(webTitle), KeePassUtilities.AutoTypeSequence());
-
-                            }
+                            ++pos;
+                            logger.SetProgress((uint) (100 * (double) pos / signons.Length));
+                            AddEntry(signon, form, db, logger);
                         }
                     }
-                    finally
-                    {
-                        slLogger.EndLogging();
-                    }
+                }
+                finally
+                {
+                    logger.EndLogging();
                 }
             }
             catch (Exception ex)
@@ -287,6 +124,107 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                 else
                     ErrorDialog.Show("Import Failed", ex);
             }
+        }
+
+        public static void AddEntry(Signon signon, ImportDialog form, PwDatabase db, IStatusLogger logger)
+        {
+            logger.SetText($"Processing signon {signon.Username} @ {signon.Hostname}.", LogStatusType.Info);
+
+            PwGroup group = form.Group ?? db.RootGroup;
+            PwEntry entry = null;
+            var newEntry = true;
+
+            if (form.CheckExisting) // TODO: Search using both the Hostname and FormSubmitUrl.
+                entry = KeePassHelper.FindMatchingEntry(db.RootGroup, signon.Hostname, signon.Username);
+
+            if (entry == null)
+            {
+                // Create a new entry.
+                entry = new PwEntry(true, true);
+                group.AddEntry(entry, true);
+                logger.SetText("Created new entry.", LogStatusType.AdditionalInfo);
+            }
+            else
+            {
+                newEntry = false;
+                logger.SetText("Found matching entry.", LogStatusType.AdditionalInfo);
+            }
+
+            if (newEntry || form.Overwrite)
+            {
+                // Set the password.
+                entry.Strings.Set(
+                    PwDefs.PasswordField,
+                    new ProtectedString(db.MemoryProtection.ProtectPassword, signon.Password)
+                );
+            }
+
+            if (!newEntry)
+                return;
+
+            string title = signon.Hostname;
+
+            if (!form.GetTitles)
+            {
+                try
+                {
+                    var uri = new Uri(signon.Hostname);
+                    title = uri.Host;
+                }
+                catch (UriFormatException ex) // TODO: May need to also catch ArgumentException
+                {
+                    logger.SetText("The URL of the signon could not be parsed.", LogStatusType.Warning);
+                }
+            }
+
+            /*if (form.GetTitles || form.GetIcons)
+            {
+                logger.SetText("Scraping website for the title and/or icon.", LogStatusType.AdditionalInfo);
+                WebScraper.ScrapeAsync(signon.Hostname, form.GetTitles, form.GetIcons);
+
+                if (!string.IsNullOrWhiteSpace(title))
+                {
+                    entry.Strings.Set(
+                        PwDefs.TitleField,
+                        new ProtectedString(db.MemoryProtection.ProtectTitle, title)
+                    );
+                }
+
+                if (iconData != null)
+                {
+                    var icon = new PwCustomIcon(new PwUuid(true), iconData);
+                    db.CustomIcons.Add(icon);
+                    entry.CustomIconUuid = icon.Uuid;
+                }
+            }*/
+
+            // Set all fields.
+            entry.Strings.Set(
+                PwDefs.TitleField,
+                new ProtectedString(db.MemoryProtection.ProtectTitle, title)
+            );
+            entry.Strings.Set(
+                PwDefs.UserNameField,
+                new ProtectedString(db.MemoryProtection.ProtectUserName, signon.Username)
+            );
+            entry.Strings.Set
+                (PwDefs.UrlField,
+                new ProtectedString(db.MemoryProtection.ProtectUrl, signon.Hostname)
+            );
+
+            if (form.IncludeNotes)
+            {
+                entry.Strings.Set(
+                    PwDefs.NotesField,
+                    new ProtectedString(db.MemoryProtection.ProtectNotes, Note));
+            }
+
+            entry.Expires = false;
+            entry.IconId = form.EntryIcon;
+            entry.CreationTime = signon.TimeCreated ?? entry.CreationTime;
+            entry.LastAccessTime = signon.TimeLastUsed ?? entry.LastAccessTime;
+            entry.LastModificationTime = signon.TimePasswordChanged ?? entry.LastModificationTime;
+            entry.UsageCount = signon.TimesUsed;
         }
     }
 }

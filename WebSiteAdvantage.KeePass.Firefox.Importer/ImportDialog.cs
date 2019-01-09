@@ -62,7 +62,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public bool GetIcons => this.checkIcons.Checked;
 
-        public bool Merge => this.checkExisting.Checked;
+        public bool CheckExisting => this.checkExisting.Checked;
 
         public bool Overwrite => this.checkOverwite.Checked;
 
