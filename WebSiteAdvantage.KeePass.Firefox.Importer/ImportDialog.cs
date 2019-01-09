@@ -33,7 +33,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             InitializeComponent();
 
-            this.comboBoxIconName.SelectedIndex = 16;
+            this.comboIcon.SelectedIndex = 16;
         }
 
 
@@ -44,7 +44,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public string IconName
         {
-            get { return this.comboBoxIconName.SelectedItem.ToString(); }
+            get { return this.comboIcon.SelectedItem.ToString(); }
         }
 
 
@@ -52,8 +52,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             get
             {
-                if (this.comboBoxGroup.SelectedItem is KeePassHelper.GroupItem)
-                    return ((KeePassHelper.GroupItem)this.comboBoxGroup.SelectedItem).Group;
+                if (this.comboGroup.SelectedItem is KeePassHelper.GroupItem)
+                    return ((KeePassHelper.GroupItem)this.comboGroup.SelectedItem).Group;
 
                 return null;
             }
@@ -61,7 +61,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public string Password
         {
-            get { return this.textBoxPassword.Text; }
+            get { return this.textPassword.Text; }
         }
 
 
@@ -69,7 +69,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             get
             {
-                return this.checkBoxTitle.Checked;
+                return this.checkInternetTitles.Checked;
             }
         }
 
@@ -77,28 +77,28 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             get
             {
-                return this.checkBoxIncludeImportNotes.Checked;
+                return this.checkNotes.Checked;
             }
         }
         public bool AddAutoType
         {
             get
             {
-                return this.checkBoxAutoType.Checked;
+                return this.checkAutoType.Checked;
             }
         }
         public bool Merge
         {
             get
             {
-                return this.checkBoxCheckExisting.Checked;
+                return this.checkExisting.Checked;
             }
         }
         public bool Overwrite
         {
             get
             {
-                return this.checkBoxOverwite.Checked;
+                return this.checkOverwite.Checked;
             }
         }
 
@@ -106,9 +106,9 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             get
             {
-                if (this.comboBoxProfile.SelectedItem == null)
+                if (this.comboProfile.SelectedItem == null)
                     return null;
-                return ((FirefoxProfileInfo)this.comboBoxProfile.SelectedItem).AbsolutePath;
+                return ((FirefoxProfileInfo)this.comboProfile.SelectedItem).AbsolutePath;
             }
         }
 
@@ -126,7 +126,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         private void checkBoxCheckExisting_CheckedChanged(object sender, EventArgs e)
         {
-            this.checkBoxOverwite.Enabled = this.checkBoxCheckExisting.Checked;
+            this.checkOverwite.Enabled = this.checkExisting.Checked;
         }
 
         private void buttonHelp_Click(object sender, EventArgs e)
@@ -139,8 +139,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         private void Form1_Load(object sender, EventArgs e)
         {
             List<FirefoxProfileInfo> profiles = FirefoxProfileInfo.FindFirefoxProfileInfos();
-            this.comboBoxProfile.DataSource = profiles;
-            this.comboBoxProfile.DisplayMember = "Name";
+            this.comboProfile.DataSource = profiles;
+            this.comboProfile.DisplayMember = "Name";
 
             this.Text = "Web Site Advantage Firefox to KeePass Importer (" + KeePassUtilities.Version + ")";
 
@@ -148,7 +148,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             {
                 if (profile.Default)
                 {
-                    this.comboBoxProfile.SelectedItem = profile;
+                    this.comboProfile.SelectedItem = profile;
                     break;
                 }
             }
@@ -158,7 +158,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public void Initialise(PwDatabase pwStorage)
         {
-            KeePassHelper.InitialiseGroupComboBox(this.comboBoxGroup, pwStorage);
+            KeePassHelper.InitialiseGroupComboBox(this.comboGroup, pwStorage);
         }
 
         private void buttonFindProfiles_Click(object sender, EventArgs e)
@@ -182,12 +182,12 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboBoxProfile.DataSource;
+                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboProfile.DataSource;
                     FirefoxProfileInfo.FindFirefoxProfileInfosFromIniFile(openFileDialog1.FileName, list);
 
                     // get it to refresh!
-                    this.comboBoxProfile.DataSource = null;
-                    this.comboBoxProfile.DataSource = list;
+                    this.comboProfile.DataSource = null;
+                    this.comboProfile.DataSource = list;
                 }
             }
 
@@ -202,7 +202,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                 if (openFolderDialog1.ShowDialog() == DialogResult.OK)
                 {
 
-                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboBoxProfile.DataSource;
+                    List<FirefoxProfileInfo> list = (List<FirefoxProfileInfo>)this.comboProfile.DataSource;
                     FirefoxProfileInfo profile = new FirefoxProfileInfo();
 
                     profile.Name = openFolderDialog1.SelectedPath.Substring(openFolderDialog1.SelectedPath.LastIndexOf(@"\") + 1);
@@ -213,8 +213,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
                     list.Add(profile);
 
                     // get it to refresh!
-                    this.comboBoxProfile.DataSource = null;
-                    this.comboBoxProfile.DataSource = list;
+                    this.comboProfile.DataSource = null;
+                    this.comboProfile.DataSource = list;
                 }
             }
         }
