@@ -84,6 +84,9 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.comboProfile.DataSource = new ObservableCollection<ProfileInfo>(profiles);
             this.comboProfile.DisplayMember = "Name";
             this.comboProfile.SelectedItem = ProfileParser.GetPrimaryProfile(profiles);
+
+            string[] iconNames = Enum.GetNames(typeof(PwIcon));
+            this.comboIcon.DataSource = iconNames.Take(iconNames.Length - 1); // Last item is an undesirable virtual identifier
         }
 
         private void InternetTitlesCheckedEventHandler(object sender, EventArgs e)
