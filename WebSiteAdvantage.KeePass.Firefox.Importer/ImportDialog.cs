@@ -38,37 +38,33 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     {
         public static readonly Version Version = Assembly.GetAssembly(typeof(ProfileParser)).GetName().Version;
 
-        public ImportDialog()
+        public ImportDialog(PwDatabase pwStorage)
         {
             InitializeComponent();
-
-            this.comboIcon.SelectedIndex = 16;
-        }
-
-        public void Initialise(PwDatabase pwStorage)
-        {
             KeePassHelper.InitialiseGroupComboBox(this.comboGroup, pwStorage);
         }
 
         #region Properties
 
-        public string IconName => this.comboIcon.SelectedItem.ToString();
-
-        public PwGroup Group => (this.comboGroup.SelectedItem as KeePassHelper.GroupItem)?.Group;
+        public string ProfilePath => (this.comboProfile.SelectedItem as ProfileInfo)?.AbsolutePath;
 
         public string Password => this.textPassword.Text;
 
-        public bool GetTitles => this.checkInternetTitles.Checked;
+        public PwGroup Group => (this.comboGroup.SelectedItem as KeePassHelper.GroupItem)?.Group;
 
-        public bool IncludeImportNotes => this.checkNotes.Checked;
+        public string IconName => this.comboIcon.SelectedItem.ToString();
 
         public bool AddAutoType => this.checkAutoType.Checked;
+
+        public bool IncludeNotes => this.checkNotes.Checked;
+
+        public bool GetTitles => this.checkTitles.Checked;
+
+        public bool GetIcons => this.checkIcons.Checked;
 
         public bool Merge => this.checkExisting.Checked;
 
         public bool Overwrite => this.checkOverwite.Checked;
-
-        public string ProfilePath => (this.comboProfile.SelectedItem as ProfileInfo)?.AbsolutePath;
 
         #endregion
 
@@ -87,11 +83,12 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
             string[] iconNames = Enum.GetNames(typeof(PwIcon));
             this.comboIcon.DataSource = iconNames.Take(iconNames.Length - 1); // Last item is an undesirable virtual identifier
+            this.comboIcon.SelectedIndex = 16;
         }
 
-        private void InternetTitlesCheckedEventHandler(object sender, EventArgs e)
+        private void IconsCheckedEventHandler(object sender, EventArgs e)
         {
-//			this.checkBoxAutoType.Enabled = this.checkBoxTitle.Checked;
+            this.comboIcon.Enabled = !this.comboIcon.Enabled; // Toggle the icon ComboBox
         }
 
         private void ExistingCheckedEventHandler(object sender, EventArgs e)

@@ -72,9 +72,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             try
             {
-                ImportDialog form = new ImportDialog();
-
-                form.Initialise(pwStorage);
+                var form = new ImportDialog(pwStorage);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -155,7 +153,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
                                 string notes = String.Empty;
 
-                                if (form.IncludeImportNotes)
+                                if (form.IncludeNotes)
                                 {
                                     notes += "Imported from FireFox by the Web Site Advantage FireFox to KeePass Importer" + Environment.NewLine;
                                 }

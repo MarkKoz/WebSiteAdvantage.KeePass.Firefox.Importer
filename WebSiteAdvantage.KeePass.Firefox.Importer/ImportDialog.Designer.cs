@@ -56,7 +56,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.checkOverwite = new System.Windows.Forms.CheckBox();
             this.checkExisting = new System.Windows.Forms.CheckBox();
             this.groupInternet = new System.Windows.Forms.GroupBox();
-            this.checkInternetTitles = new System.Windows.Forms.CheckBox();
+            this.checkIcons = new System.Windows.Forms.CheckBox();
+            this.checkTitles = new System.Windows.Forms.CheckBox();
             this.groupWarning = new System.Windows.Forms.GroupBox();
             this.labelWarning = new System.Windows.Forms.Label();
             this.groupFirefox = new System.Windows.Forms.GroupBox();
@@ -169,7 +170,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             //
             this.groupInternet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupInternet.Controls.Add(this.checkInternetTitles);
+            this.groupInternet.Controls.Add(this.checkIcons);
+            this.groupInternet.Controls.Add(this.checkTitles);
             this.groupInternet.Controls.Add(this.groupWarning);
             this.groupInternet.Location = new System.Drawing.Point(3, 238);
             this.groupInternet.Name = "groupInternet";
@@ -178,16 +180,26 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             this.groupInternet.TabStop = false;
             this.groupInternet.Text = "Internet Access";
             //
-            // checkInternetTitles
+            // checkIcons
             //
-            this.checkInternetTitles.AutoSize = true;
-            this.checkInternetTitles.Location = new System.Drawing.Point(15, 19);
-            this.checkInternetTitles.Name = "checkInternetTitles";
-            this.checkInternetTitles.Size = new System.Drawing.Size(138, 17);
-            this.checkInternetTitles.TabIndex = 0;
-            this.checkInternetTitles.Text = "Get Titles from websites";
-            this.checkInternetTitles.UseVisualStyleBackColor = true;
-            this.checkInternetTitles.CheckedChanged += new System.EventHandler(this.InternetTitlesCheckedEventHandler);
+            this.checkIcons.AutoSize = true;
+            this.checkIcons.Location = new System.Drawing.Point(15, 42);
+            this.checkIcons.Name = "checkIcons";
+            this.checkIcons.Size = new System.Drawing.Size(127, 17);
+            this.checkIcons.TabIndex = 1;
+            this.checkIcons.Text = "Get icons of websites";
+            this.checkIcons.UseVisualStyleBackColor = true;
+            this.checkIcons.CheckedChanged += new System.EventHandler(this.IconsCheckedEventHandler);
+            //
+            // checkTitles
+            //
+            this.checkTitles.AutoSize = true;
+            this.checkTitles.Location = new System.Drawing.Point(15, 19);
+            this.checkTitles.Name = "checkTitles";
+            this.checkTitles.Size = new System.Drawing.Size(123, 17);
+            this.checkTitles.TabIndex = 0;
+            this.checkTitles.Text = "Get titles of websites";
+            this.checkTitles.UseVisualStyleBackColor = true;
             //
             // groupWarning
             //
@@ -525,7 +537,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         private System.Windows.Forms.GroupBox groupMerging;
         private System.Windows.Forms.CheckBox checkExisting;
         private System.Windows.Forms.CheckBox checkAutoType;
-        private System.Windows.Forms.CheckBox checkInternetTitles;
+        private System.Windows.Forms.CheckBox checkTitles;
         private System.Windows.Forms.Label labelGroup;
         private System.Windows.Forms.CheckBox checkOverwite;
         private System.Windows.Forms.Label labelIcon;
@@ -543,5 +555,6 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         private System.Windows.Forms.Button buttonBeer;
         private System.Windows.Forms.CheckBox checkNotes;
         private System.Windows.Forms.ComboBox comboGroup;
+        private System.Windows.Forms.CheckBox checkIcons;
     }
 }
