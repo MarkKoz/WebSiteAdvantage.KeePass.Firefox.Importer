@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebSiteAdvantage.KeePass.Firefox.Importer</RootNamespace>
-    <AssemblyName>WebSiteAdvantage.KeePass.Firefox.Importer</AssemblyName>
+    <AssemblyName>WebSiteAdvantageKeePassFirefoxImporter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

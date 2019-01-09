@@ -27,7 +27,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     /// <summary>
     /// Registers the plugin with KeePass.
     /// </summary>
-    public sealed class ImporterPlugin : Plugin
+    public sealed class WebSiteAdvantageKeePassFirefoxImporterExt : Plugin
     {
         private IPluginHost host = null;
 
