@@ -37,21 +37,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
     /// </summary>
     public sealed class Importer : FileFormatProvider
     {
-        private static Importer _Instance = null;
-        /// <summary>
-        /// So can access a single common copy of the importer (Singleton)
-        /// </summary>
-        public static Importer Instance
-        {
-            get
-            {
-                if (_Instance == null)
-                {
-                    _Instance = new Importer();
-                }
-                return _Instance;
-            }
-        }
+        private static readonly Lazy<Importer> LazyImporter = new Lazy<Importer>();
+        public static Importer Instance => LazyImporter.Value;
 
         /// <summary>
         /// The type of import
