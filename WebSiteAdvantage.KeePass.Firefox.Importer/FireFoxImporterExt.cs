@@ -40,7 +40,6 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
 
             Program.FileFormatPool.Add(FirefoxFormatImporter.Instance);
-            Program.FileFormatPool.Add(FirefoxFormatImporterXml.Instance);
 
             return true; // Initialization successful
         }
@@ -48,7 +47,6 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         public override void Terminate()
         {
             Program.FileFormatPool.Remove(FirefoxFormatImporter.Instance);
-            Program.FileFormatPool.Remove(FirefoxFormatImporterXml.Instance);
         }
     }
 }
