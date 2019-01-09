@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteAdvantage.KeePass.Firefox.Importer", "WebSiteAdvantage.KeePass.Firefox.Importer\WebSiteAdvantage.KeePass.Firefox.Importer.csproj", "{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{74C93EC0-155B-47C4-A5BC-7A243272D6FB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.gitmodules = .gitmodules
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSiteAdvantage.KeePass.Firefox", "WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj", "{C2CE32F2-A994-4645-92AB-EF89A13BD422}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeePass", "KeePass\KeePass\KeePass.csproj", "{10938016-DEE2-4A25-9A5A-8FD3444379CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DDDA3E3-4678-4644-9BA8-5FC7BB92C860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10938016-DEE2-4A25-9A5A-8FD3444379CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10938016-DEE2-4A25-9A5A-8FD3444379CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10938016-DEE2-4A25-9A5A-8FD3444379CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10938016-DEE2-4A25-9A5A-8FD3444379CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7CB23A0-C900-40F4-A8BF-566B615C0C39}
+	EndGlobalSection
+EndGlobal

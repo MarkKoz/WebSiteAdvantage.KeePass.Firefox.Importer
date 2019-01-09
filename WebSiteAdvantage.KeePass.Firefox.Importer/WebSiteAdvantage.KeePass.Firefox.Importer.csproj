@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +11,8 @@
     <RootNamespace>WebSiteAdvantage.KeePass.Firefox.Importer</RootNamespace>
     <AssemblyName>WebSiteAdvantageKeePassFirefoxImporter</AssemblyName>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>WebSiteAdvantage.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -137,11 +138,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="WebSiteAdvantage.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WebSiteAdvantageKeePassFirefox-lgpl.txt" />
-    <Content Include="WebSiteAdvantageKeePassFirefox-README.txt" />
     <None Include="Resources\beer3.ico" />
     <None Include="Resources\beer2.ico" />
     <None Include="Resources\beer.gif" />
@@ -167,10 +163,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="KeePassLibs\2.29\" />
-    <Folder Include="Releases\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj">
       <Project>{C2CE32F2-A994-4645-92AB-EF89A13BD422}</Project>
