@@ -20,7 +20,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -141,7 +141,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             IEnumerable<string> paths = ProfileParser.GetProfilePaths();
             ProfileInfo[] profiles = ProfileParser.GetProfiles(paths).SkipExceptions().ToArray();
 
-            this.comboProfile.DataSource = new ObservableCollection<ProfileInfo>(profiles);
+            this.comboProfile.DataSource = new BindingList<ProfileInfo>(profiles);
             this.comboProfile.DisplayMember = "Name";
             this.comboProfile.SelectedItem = ProfileParser.GetPrimaryProfile(profiles);
 
@@ -182,7 +182,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var profiles = (ObservableCollection<ProfileInfo>) this.comboProfile.DataSource;
+                    var profiles = (BindingList<ProfileInfo>) this.comboProfile.DataSource;
 
                     foreach (ProfileInfo profile in ProfileParser.GetProfiles(dialog.FileNames).SkipExceptions())
                     {
@@ -200,7 +200,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    var profiles = (ObservableCollection<ProfileInfo>) this.comboProfile.DataSource;
+                    var profiles = (BindingList<ProfileInfo>) this.comboProfile.DataSource;
                     string dirName = new DirectoryInfo(dialog.SelectedPath).Name;
                     var profile = new ProfileInfo
                     {
