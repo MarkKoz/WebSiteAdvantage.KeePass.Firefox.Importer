@@ -159,15 +159,25 @@
     <ProjectReference Include="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj">
       <Project>{c2ce32f2-a994-4645-92ab-ef89a13bd422}</Project>
       <Name>WebSiteAdvantage.KeePass.Firefox</Name>
+      <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\HtmlAgilityPack.dll</PlgxReference>
+      <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Newtonsoft.Json.dll</PlgxReference>
+      <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\NLog.dll</PlgxReference>
+      <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\System.ValueTuple.dll</PlgxReference>
+      <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\WebSiteAdvantage.KeePass.Firefox.dll</PlgxReference>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterClean">
-    <Delete Files="$(OutputPath)KeePass.exe" />
+    <Delete Files="$(OutDir)KeePass.exe" />
   </Target>
   <Target Name="AfterBuild" Condition="'$(Configuration)' == 'ReleasePlgx'">
     <CallTarget Targets="BuildPlgx" />
     <Delete Files="$(TargetPath)" />
+    <Delete Files="$(OutDir)HtmlAgilityPack.dll" />
+    <Delete Files="$(OutDir)Newtonsoft.Json.dll" />
+    <Delete Files="$(OutDir)NLog.dll" />
+    <Delete Files="$(OutDir)System.ValueTuple.dll" />
+    <Delete Files="$(OutDir)WebSiteAdvantage.KeePass.Firefox.dll" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

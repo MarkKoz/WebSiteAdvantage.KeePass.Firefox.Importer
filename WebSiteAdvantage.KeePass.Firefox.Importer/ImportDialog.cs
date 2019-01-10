@@ -36,7 +36,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 {
     public partial class ImportDialog : Form
     {
-        public static readonly Version Version = Assembly.GetAssembly(typeof(ProfileParser)).GetName().Version;
+        public static readonly string Version = Assembly.GetAssembly(typeof(ProfileParser)).GetName().Version.ToString();
 
         public ImportDialog(PwDatabase pwStorage)
         {
@@ -46,25 +46,89 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         #region Properties
 
-        public string ProfilePath => (this.comboProfile.SelectedItem as ProfileInfo)?.AbsolutePath;
+        public string ProfilePath
+        {
+            get
+            {
+                var info = this.comboProfile.SelectedItem as ProfileInfo;
 
-        public string Password => this.textPassword.Text;
+                return info == null ? null : info.AbsolutePath;
+            }
+        }
 
-        public PwGroup Group => (this.comboGroup.SelectedItem as KeePassHelper.GroupItem)?.Group;
+        public string Password
+        {
+            get
+            {
+                return this.textPassword.Text;
+            }
+        }
 
-        public PwIcon EntryIcon => (PwIcon) Enum.Parse(typeof(PwIcon), (string) this.comboIcon.SelectedItem);
+        public PwGroup Group
+        {
+            get
+            {
+                var item = this.comboProfile.SelectedItem as KeePassHelper.GroupItem;
 
-        public bool AddAutoType => this.checkAutoType.Checked;
+                return item == null ? null : item.Group;
+            }
+        }
 
-        public bool IncludeNotes => this.checkNotes.Checked;
+        public PwIcon EntryIcon
+        {
+            get
+            {
+                return (PwIcon) Enum.Parse(typeof(PwIcon), (string) this.comboIcon.SelectedItem);
+            }
+        }
 
-        public bool GetTitles => this.checkTitles.Checked;
+        public bool AddAutoType
+        {
+            get
+            {
+                return this.checkAutoType.Checked;
+            }
+        }
 
-        public bool GetIcons => this.checkIcons.Checked;
+        public bool IncludeNotes
+        {
+            get
+            {
+                return this.checkNotes.Checked;
+            }
+        }
 
-        public bool CheckExisting => this.checkExisting.Checked;
+        public bool GetTitles
+        {
+            get
+            {
+                return this.checkTitles.Checked;
+            }
+        }
 
-        public bool Overwrite => this.checkOverwite.Checked;
+        public bool GetIcons
+        {
+            get
+            {
+                return this.checkIcons.Checked;
+            }
+        }
+
+        public bool CheckExisting
+        {
+            get
+            {
+                return this.checkExisting.Checked;
+            }
+        }
+
+        public bool Overwrite
+        {
+            get
+            {
+                return this.checkOverwite.Checked;
+            }
+        }
 
         #endregion
 
@@ -72,7 +136,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         private void FormLoadEventHandler(object sender, EventArgs e)
         {
-            this.Text = $"Web Site Advantage Firefox to KeePass Importer ({Version})";
+            this.Text = "Web Site Advantage Firefox to KeePass Importer (" + Version + ")";
 
             IEnumerable<string> paths = ProfileParser.GetProfilePaths();
             ProfileInfo[] profiles = ProfileParser.GetProfiles(paths).SkipExceptions().ToArray();
@@ -156,7 +220,8 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         {
             var control = sender as Control;
 
-            Process.Start(control?.Tag.ToString() + Version);
+            if (control != null)
+                Process.Start(control.Tag + Version);
         }
 
         #endregion

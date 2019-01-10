@@ -44,32 +44,86 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
         private const string Note = "Imported from FireFox by the Web Site Advantage FireFox to KeePass Importer";
         private static readonly Lazy<Importer> LazyImporter = new Lazy<Importer>();
 
-        public static Importer Instance => LazyImporter.Value;
+        public static Importer Instance
+        {
+            get
+            {
+                return LazyImporter.Value;
+            }
+        }
 
-        public override bool SupportsImport => true;
+        public override bool SupportsImport
+        {
+            get
+            {
+                return true;
+            }
+        }
 
-        public override bool SupportsExport => false;
+        public override bool SupportsExport
+        {
+            get
+            {
+                return false;
+            }
+        }
 
-        public override string FormatName => "Firefox";
+        public override string FormatName
+        {
+            get
+            {
+                return "Firefox";
+            }
+        }
 
         /// <inheritdoc />
-        public override string DefaultExtension => "xml";
+        public override string DefaultExtension
+        {
+            get
+            {
+                return "xml";
+            }
+        }
 
         /// <inheritdoc />
-        public override string ApplicationGroup => KPRes.Browser;
+        public override string ApplicationGroup
+        {
+            get
+            {
+                return KPRes.Browser;
+            }
+        }
 
         /// <inheritdoc />
-        public override bool ImportAppendsToRootGroupOnly => false;
+        public override bool ImportAppendsToRootGroupOnly
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         /// <remarks>
         /// Data is retrieved directly from Firefox
         /// </remarks>
-        public override bool RequiresFile => false;
+        public override bool RequiresFile
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         /// <remarks>
         /// Should get a Firefox icon.
         /// </remarks>
-        public override System.Drawing.Image SmallIcon => Resources.firefox16;
+        public override System.Drawing.Image SmallIcon
+        {
+            get
+            {
+                return Resources.firefox16;
+            }
+        }
 
         /// <inheritdoc />
         public override void Import(PwDatabase db, System.IO.Stream input, IStatusLogger logger)
@@ -128,7 +182,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
 
         public static void AddEntry(Signon signon, ImportDialog form, PwDatabase db, IStatusLogger logger)
         {
-            logger.SetText($"Processing signon {signon.Username} @ {signon.Hostname}.", LogStatusType.Info);
+            logger.SetText("Processing signon " + signon.Username + " @ " + signon.Hostname + ".", LogStatusType.Info);
 
             PwGroup group = form.Group ?? db.RootGroup;
             PwEntry entry = null;
