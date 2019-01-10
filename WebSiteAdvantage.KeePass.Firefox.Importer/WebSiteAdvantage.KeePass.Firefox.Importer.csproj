@@ -5,8 +5,46 @@
     <PlgxConfiguration>
       <Prerequisites>
         <DotNetVersion>4.0</DotNetVersion>
+        <OS>Windows</OS>
       </Prerequisites>
+      <BuildCommands>
+        <PostBuild>cmd /c xcopy "{PLGX_TEMP_DIR}Native" "{PLGX_CACHE_DIR}" /SKC</PostBuild>
+      </BuildCommands>
     </PlgxConfiguration>
+    <PlgxExtras>
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\freebl3.dll" Destination="Native\Nss\x86\freebl3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\js3250.dll" Destination="Native\Nss\x86\js3250.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\mozcrt19.dll" Destination="Native\Nss\x86\mozcrt19.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\nspr4.dll" Destination="Native\Nss\x86\nspr4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\nss3.dll" Destination="Native\Nss\x86\nss3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\nssckbi.dll" Destination="Native\Nss\x86\nssckbi.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\nssdbm3.dll" Destination="Native\Nss\x86\nssdbm3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\nssutil3.dll" Destination="Native\Nss\x86\nssutil3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\plc4.dll" Destination="Native\Nss\x86\plc4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\plds4.dll" Destination="Native\Nss\x86\plds4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\smime3.dll" Destination="Native\Nss\x86\smime3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\softokn3.dll" Destination="Native\Nss\x86\softokn3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\sqlite3.dll" Destination="Native\Nss\x86\sqlite3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\ssl3.dll" Destination="Native\Nss\x86\ssl3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x86\xpcom.dll" Destination="Native\Nss\x86\xpcom.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\freebl3.dll" Destination="Native\Nss\x64\freebl3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\js6450.dll" Destination="Native\Nss\x64\js6450.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\mozcrt19.dll" Destination="Native\Nss\x64\mozcrt19.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\nspr4.dll" Destination="Native\Nss\x64\nspr4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\nss3.dll" Destination="Native\Nss\x64\nss3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\nssckbi.dll" Destination="Native\Nss\x64\nssckbi.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\nssdbm3.dll" Destination="Native\Nss\x64\nssdbm3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\nssutil3.dll" Destination="Native\Nss\x64\nssutil3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\plc4.dll" Destination="Native\Nss\x64\plc4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\plds4.dll" Destination="Native\Nss\x64\plds4.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\smime3.dll" Destination="Native\Nss\x64\smime3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\softokn3.dll" Destination="Native\Nss\x64\softokn3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\sqlite3.dll" Destination="Native\Nss\x64\sqlite3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\ssl3.dll" Destination="Native\Nss\x64\ssl3.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Nss\x64\xpcom.dll" Destination="Native\Nss\x64\xpcom.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\x64\SQLite.Interop.dll" Destination="Native\x64\SQLite.Interop.dll" />
+      <Item Source="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\x86\SQLite.Interop.dll" Destination="Native\x86\SQLite.Interop.dll" />
+    </PlgxExtras>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -54,6 +92,7 @@
         <Command type="AfterBuild" command="rm &quot;${TargetFile}&quot;" />
       </CustomCommands>
     </CustomCommands>
+    <AllowedReferenceRelatedFileExtensions>.dll</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -70,9 +109,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net40\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
@@ -121,12 +157,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="KeePass.exe.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory Condition=" '$(Configuration)' != 'ReleasePlgx' ">Always</CopyToOutputDirectory>
       <ExcludeFromPlgx />
     </None>
     <None Include="KeePass.config.xml">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory Condition=" '$(Configuration)' != 'ReleasePlgx' ">Always</CopyToOutputDirectory>
       <ExcludeFromPlgx />
     </None>
     <None Include="packages.config" />
@@ -155,10 +191,12 @@
     <ProjectReference Include="..\KeePass\KeePass\KeePass.csproj">
       <Project>{10938016-dee2-4a25-9a5a-8fd3444379ca}</Project>
       <Name>KeePass</Name>
+      <Private Condition=" '$(Configuration)' == 'ReleasePlgx' ">False</Private>
     </ProjectReference>
     <ProjectReference Include="..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox.csproj">
       <Project>{c2ce32f2-a994-4645-92ab-ef89a13bd422}</Project>
       <Name>WebSiteAdvantage.KeePass.Firefox</Name>
+      <Private Condition=" '$(Configuration)' == 'ReleasePlgx' ">False</Private>
       <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\HtmlAgilityPack.dll</PlgxReference>
       <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\Newtonsoft.Json.dll</PlgxReference>
       <PlgxReference>..\WebSiteAdvantage.KeePass.Firefox\WebSiteAdvantage.KeePass.Firefox\bin\Release\NLog.dll</PlgxReference>
@@ -167,17 +205,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="AfterClean">
-    <Delete Files="$(OutDir)KeePass.exe" />
-  </Target>
-  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'ReleasePlgx'">
+  <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'ReleasePlgx' ">
     <CallTarget Targets="BuildPlgx" />
     <Delete Files="$(TargetPath)" />
-    <Delete Files="$(OutDir)HtmlAgilityPack.dll" />
-    <Delete Files="$(OutDir)Newtonsoft.Json.dll" />
-    <Delete Files="$(OutDir)NLog.dll" />
-    <Delete Files="$(OutDir)System.ValueTuple.dll" />
-    <Delete Files="$(OutDir)WebSiteAdvantage.KeePass.Firefox.dll" />
   </Target>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -185,9 +215,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
-    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets'))" />
     <Error Condition="!Exists('..\packages\PlgxTool.1.0.0\build\PlgxTool.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PlgxTool.1.0.0\build\PlgxTool.targets'))" />
   </Target>
-  <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net40\System.Data.SQLite.Core.targets')" />
   <Import Project="..\packages\PlgxTool.1.0.0\build\PlgxTool.targets" Condition="Exists('..\packages\PlgxTool.1.0.0\build\PlgxTool.targets')" />
 </Project>
