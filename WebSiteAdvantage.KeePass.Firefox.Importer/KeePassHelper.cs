@@ -19,13 +19,11 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using KeePassLib;
 using System.Windows.Forms;
 using KeePassLib.Collections;
 
-namespace WebSiteAdvantage.KeePass.Firefox.Importer
+namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     /// <summary>
     /// common methods to help use keepass.

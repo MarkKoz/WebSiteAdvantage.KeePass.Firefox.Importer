@@ -16,7 +16,7 @@
     <ProjectGuid>{015E16A8-526E-43C7-9E80-8ED2B4A163EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebSiteAdvantage.KeePass.Firefox.Importer</RootNamespace>
+    <RootNamespace>WebSiteAdvantageKeePassFirefoxImporter</RootNamespace>
     <AssemblyName>WebSiteAdvantageKeePassFirefoxImporter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-namespace WebSiteAdvantage.KeePass.Firefox.Importer
+namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     partial class ImportDialog
     {
@@ -244,7 +244,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             //
             // buttonLoadProfiles
             //
-            this.buttonLoadProfiles.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.openfolderHS;
+            this.buttonLoadProfiles.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.openfolderHS;
             this.buttonLoadProfiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonLoadProfiles.Location = new System.Drawing.Point(257, 19);
             this.buttonLoadProfiles.Name = "buttonLoadProfiles";
@@ -276,7 +276,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             //
             this.pictureFirefox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureFirefox.BackColor = System.Drawing.Color.Transparent;
-            this.pictureFirefox.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.firefox_128_509;
+            this.pictureFirefox.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.firefox_128_509;
             this.pictureFirefox.Location = new System.Drawing.Point(396, 14);
             this.pictureFirefox.Name = "pictureFirefox";
             this.pictureFirefox.Size = new System.Drawing.Size(89, 89);
@@ -364,7 +364,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             // pictureKeePass
             //
             this.pictureKeePass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureKeePass.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.keepasslogo_512;
+            this.pictureKeePass.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.keepasslogo_512;
             this.pictureKeePass.Location = new System.Drawing.Point(395, 13);
             this.pictureKeePass.Name = "pictureKeePass";
             this.pictureKeePass.Size = new System.Drawing.Size(89, 81);
@@ -440,7 +440,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             // buttonBeer
             //
             this.buttonBeer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonBeer.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.beer3;
+            this.buttonBeer.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.beer3;
             this.buttonBeer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonBeer.Location = new System.Drawing.Point(83, 536);
             this.buttonBeer.Name = "buttonBeer";
@@ -456,7 +456,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             // buttonHelp
             //
             this.buttonHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHelp.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.Help;
+            this.buttonHelp.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.Help;
             this.buttonHelp.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonHelp.Location = new System.Drawing.Point(12, 536);
             this.buttonHelp.Name = "buttonHelp";
@@ -473,7 +473,7 @@ namespace WebSiteAdvantage.KeePass.Firefox.Importer
             //
             this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStart.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonStart.Image = global::WebSiteAdvantage.KeePass.Firefox.Importer.Properties.Resources.FormRunHS;
+            this.buttonStart.Image = global::WebSiteAdvantageKeePassFirefoxImporter.Properties.Resources.FormRunHS;
             this.buttonStart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonStart.Location = new System.Drawing.Point(351, 535);
             this.buttonStart.Margin = new System.Windows.Forms.Padding(2);

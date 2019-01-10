@@ -32,7 +32,7 @@ using KeePassLib;
 using WebSiteAdvantage.KeePass.Firefox.Extensions;
 using WebSiteAdvantage.KeePass.Firefox.Profiles;
 
-namespace WebSiteAdvantage.KeePass.Firefox.Importer
+namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     public partial class ImportDialog : Form
     {

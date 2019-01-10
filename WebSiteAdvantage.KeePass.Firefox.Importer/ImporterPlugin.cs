@@ -22,7 +22,7 @@
 using KeePass;
 using KeePass.Plugins;
 
-namespace WebSiteAdvantage.KeePass.Firefox.Importer
+namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     /// <summary>
     /// Registers the plugin with KeePass.

@@ -29,12 +29,12 @@ using KeePassLib;
 using KeePassLib.Interfaces;
 using KeePassLib.Security;
 
-using WebSiteAdvantage.KeePass.Firefox.Importer.Properties;
+using WebSiteAdvantageKeePassFirefoxImporter.Properties;
 using WebSiteAdvantage.KeePass.Firefox.Profiles;
 using WebSiteAdvantage.KeePass.Firefox.Signons;
 using WebSiteAdvantage.KeePass.Firefox.Utilities;
 
-namespace WebSiteAdvantage.KeePass.Firefox.Importer
+namespace WebSiteAdvantageKeePassFirefoxImporter
 {
     /// <summary>
     /// A singleton class that performs the import
