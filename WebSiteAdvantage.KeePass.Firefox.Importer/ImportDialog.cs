@@ -146,7 +146,9 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             this.comboProfile.SelectedItem = ProfileParser.GetPrimaryProfile(profiles);
 
             string[] iconNames = Enum.GetNames(typeof(PwIcon));
-            this.comboIcon.DataSource = iconNames.Take(iconNames.Length - 1); // Last item is an undesirable virtual identifier
+
+            // Last item is an undesirable virtual identifier
+            this.comboIcon.DataSource = iconNames.Take(iconNames.Length - 1).ToArray();
             this.comboIcon.SelectedIndex = 16;
         }
 
