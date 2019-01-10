@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
@@ -27,8 +27,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Release|Any CPU.ActiveCfg = ReleasePlgx|Any CPU
+		{015E16A8-526E-43C7-9E80-8ED2B4A163EB}.Release|Any CPU.Build.0 = ReleasePlgx|Any CPU
 		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2CE32F2-A994-4645-92AB-EF89A13BD422}.Release|Any CPU.ActiveCfg = Release|Any CPU
