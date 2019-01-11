@@ -147,7 +147,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                     logger.StartLogging("Importing Firefox Passwords", false);
                     logger.SetText("Logging in.", LogStatusType.Info);
 
-                    using (var profile = new Profile(form.ProfilePath))
+                    using (var profile = new Profile(form.ProfilePath, form.Password))
                     {
                         logger.SetText("Reading signon file.", LogStatusType.Info);
                         Signon[] signons = profile.GetSignons().ToArray();
