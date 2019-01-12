@@ -68,7 +68,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         {
             get
             {
-                var item = this.comboProfile.SelectedItem as KeePassHelper.GroupItem;
+                var item = this.comboGroup.SelectedItem as KeePassHelper.GroupItem;
 
                 return item == null ? null : item.Group;
             }
