@@ -269,7 +269,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                 byte[] iconData = results.Item2;
 
                 if (!string.IsNullOrWhiteSpace(titleWeb))
-                    title = titleWeb;
+                    title = titleWeb.Trim();
 
                 if (iconData != null)
                 {
