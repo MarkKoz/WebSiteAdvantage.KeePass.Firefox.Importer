@@ -130,16 +130,28 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
         {
             try
             {
-                var form = new ImportDialog(db);
+                ImportDialog form;
 
-                if (form.ShowDialog() != DialogResult.OK)
-                    return;
-
-                if (string.IsNullOrEmpty(form.ProfilePath))
+                while (true)
                 {
-                    MessageBox.Show("No Profile Selected. Use Load More Profiles", "Profile Required", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Import(db, input, logger); // bit of a hack!
-                    return;
+                    form = new ImportDialog(db);
+
+                    if (form.ShowDialog() != DialogResult.OK)
+                        return;
+
+                    if (string.IsNullOrEmpty(form.ProfilePath))
+                    {
+                        MessageBox.Show(
+                            "No Profile Selected. Use Load More Profiles",
+                            "Profile Required",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
 
                 try
