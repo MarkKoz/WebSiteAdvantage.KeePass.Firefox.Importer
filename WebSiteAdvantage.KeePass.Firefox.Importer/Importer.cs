@@ -159,11 +159,11 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                 try
                 {
                     logger.StartLogging("Importing Firefox Passwords", false);
-                    logger.SetText("Logging in.", LogStatusType.Info);
+                    logger.SetText("Logging in", LogStatusType.Info);
 
                     using (var profile = new Profile(form.ProfilePath, form.Password))
                     {
-                        logger.SetText("Reading signon file.", LogStatusType.Info);
+                        logger.SetText("Reading the signon file", LogStatusType.Info);
                         IEnumerable<Signon> signons = profile.GetSignons();
                         ProcessSignonsAsync(signons, form, db, logger).GetAwaiter().GetResult();
                     }
@@ -188,7 +188,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             PwDatabase db,
             IStatusLogger logger)
         {
-            logger.SetText("Processing signons.", LogStatusType.Info);
+            logger.SetText("Processing signons", LogStatusType.Info);
 
             List<Task> tasks = signons.Select(signon => AddEntryAsync(signon, form, db, logger)).ToList();
             int total = tasks.Count;
@@ -206,7 +206,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
         public static async Task AddEntryAsync(Signon signon, ImportDialog form, PwDatabase db, IStatusLogger logger)
         {
-            logger.SetText("Processing signon " + signon.Username + " @ " + signon.Hostname + ".", LogStatusType.Info);
+            logger.SetText("Processing signon " + signon.Username + " @ " + signon.Hostname, LogStatusType.Info);
 
             PwGroup group = form.Group ?? db.RootGroup;
             PwEntry entry = null;
@@ -220,12 +220,12 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                 // Create a new entry.
                 entry = new PwEntry(true, true);
                 group.AddEntry(entry, true);
-                logger.SetText("Created new entry.", LogStatusType.AdditionalInfo);
+                logger.SetText("Created new entry", LogStatusType.AdditionalInfo);
             }
             else
             {
                 newEntry = false;
-                logger.SetText("Found matching entry.", LogStatusType.AdditionalInfo);
+                logger.SetText("Found matching entry", LogStatusType.AdditionalInfo);
             }
 
             if (newEntry || form.Overwrite)
@@ -249,12 +249,12 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             }
             catch (UriFormatException ex) // TODO: May need to also catch ArgumentException
             {
-                logger.SetText("The URL of the signon could not be parsed.", LogStatusType.Warning);
+                logger.SetText("The URL of the signon could not be parsed", LogStatusType.Warning);
             }
 
             if (form.GetTitles || form.GetIcons)
             {
-                logger.SetText("Scraping website for the title and/or icon.", LogStatusType.AdditionalInfo);
+                logger.SetText("Scraping " + signon.Hostname + " for the title and/or icon", LogStatusType.AdditionalInfo);
 
                 ValueTuple<string, byte[]> results = await WebScraper.ScrapeAsync(
                     signon.Hostname,
