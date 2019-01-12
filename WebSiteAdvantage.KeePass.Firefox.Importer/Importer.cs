@@ -19,7 +19,9 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using KeePass.DataExchange;
@@ -162,20 +164,8 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                     using (var profile = new Profile(form.ProfilePath, form.Password))
                     {
                         logger.SetText("Reading signon file.", LogStatusType.Info);
-                        Signon[] signons = profile.GetSignons().ToArray();
-
-                        logger.SetText("Processing passwords.", LogStatusType.Info);
-                        var pos = 0;
-
-                        foreach (Signon signon in signons)
-                        {
-                            if (!logger.ContinueWork()) // Check if process has been cancelled by the user.
-                                break;
-
-                            ++pos;
-                            logger.SetProgress((uint) (100 * (double) pos / signons.Length));
-                            AddEntry(signon, form, db, logger);
-                        }
+                        IEnumerable<Signon> signons = profile.GetSignons();
+                        ProcessSignonsAsync(signons, form, db, logger).GetAwaiter().GetResult();
                     }
                 }
                 finally
@@ -192,7 +182,29 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
             }
         }
 
-        public static void AddEntry(Signon signon, ImportDialog form, PwDatabase db, IStatusLogger logger)
+        public static async Task ProcessSignonsAsync(
+            IEnumerable<Signon> signons,
+            ImportDialog form,
+            PwDatabase db,
+            IStatusLogger logger)
+        {
+            logger.SetText("Processing signons.", LogStatusType.Info);
+
+            List<Task> tasks = signons.Select(signon => AddEntryAsync(signon, form, db, logger)).ToList();
+            int total = tasks.Count;
+            var progress = 0;
+
+            while (tasks.Count > 0)
+            {
+                Task completedTask = Task.Factory.ContinueWhenAny(tasks.ToArray(), task => tasks.Remove(task));
+                await completedTask.ConfigureAwait(false);
+
+                ++progress;
+                logger.SetProgress((uint) (100 * (double) progress / total));
+            }
+        }
+
+        public static async Task AddEntryAsync(Signon signon, ImportDialog form, PwDatabase db, IStatusLogger logger)
         {
             logger.SetText("Processing signon " + signon.Username + " @ " + signon.Hostname + ".", LogStatusType.Info);
 
@@ -243,18 +255,21 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                 }
             }
 
-            /*if (form.GetTitles || form.GetIcons)
+            if (form.GetTitles || form.GetIcons)
             {
                 logger.SetText("Scraping website for the title and/or icon.", LogStatusType.AdditionalInfo);
-                WebScraper.ScrapeAsync(signon.Hostname, form.GetTitles, form.GetIcons);
 
-                if (!string.IsNullOrWhiteSpace(title))
-                {
-                    entry.Strings.Set(
-                        PwDefs.TitleField,
-                        new ProtectedString(db.MemoryProtection.ProtectTitle, title)
-                    );
-                }
+                ValueTuple<string, byte[]> results = await WebScraper.ScrapeAsync(
+                    signon.Hostname,
+                    form.GetTitles,
+                    form.GetIcons
+                ).ConfigureAwait(false);
+
+                string titleWeb = results.Item1;
+                byte[] iconData = results.Item2;
+
+                if (!string.IsNullOrWhiteSpace(titleWeb))
+                    title = titleWeb;
 
                 if (iconData != null)
                 {
@@ -262,7 +277,7 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
                     db.CustomIcons.Add(icon);
                     entry.CustomIconUuid = icon.Uuid;
                 }
-            }*/
+            }
 
             // Set all fields.
             entry.Strings.Set(
