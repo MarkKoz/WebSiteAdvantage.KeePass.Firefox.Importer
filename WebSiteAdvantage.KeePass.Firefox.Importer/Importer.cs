@@ -242,17 +242,14 @@ namespace WebSiteAdvantageKeePassFirefoxImporter
 
             string title = signon.Hostname;
 
-            if (!form.GetTitles)
+            try
             {
-                try
-                {
-                    var uri = new Uri(signon.Hostname);
-                    title = uri.Host;
-                }
-                catch (UriFormatException ex) // TODO: May need to also catch ArgumentException
-                {
-                    logger.SetText("The URL of the signon could not be parsed.", LogStatusType.Warning);
-                }
+                var uri = new Uri(signon.Hostname);
+                title = uri.Host;
+            }
+            catch (UriFormatException ex) // TODO: May need to also catch ArgumentException
+            {
+                logger.SetText("The URL of the signon could not be parsed.", LogStatusType.Warning);
             }
 
             if (form.GetTitles || form.GetIcons)
